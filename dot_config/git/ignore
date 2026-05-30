@@ -1,0 +1,5 @@
+# Editor locals
+.vs/
+.vscode/
+.idea/
+
