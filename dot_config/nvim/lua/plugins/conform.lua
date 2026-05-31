@@ -18,10 +18,14 @@ return {
     },
     opts = {
       notify_on_error = true,
-      format_on_save = {
-        timeout_ms = 500,
-        lsp_format = 'fallback',
-      },
+      format_on_save = function(bufnr)
+        if vim.b[bufnr].disable_format_on_save then return nil end
+
+        return {
+          timeout_ms = 500,
+          lsp_format = 'fallback',
+        }
+      end,
       formatters_by_ft = {
         lua = { 'stylua' },
         javascript = { 'prettierd' },
