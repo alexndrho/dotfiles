@@ -1,28 +1,81 @@
-# Lines configured by zsh-newuser-install
+# Environment
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export EDITOR=nvim
+
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+export NVM_DIR="$HOME/.nvm"
+
+# history and keybindings
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-bindkey -e
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/skidy/.zshrc'
+bindkey -v
 
+# Zinit bootstrap
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+
+if [ ! -d "$ZINIT_HOME" ]; then
+  mkdir -p "$(dirname "$ZINIT_HOME")"
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+
+source "$ZINIT_HOME/zinit.zsh"
+
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# zinit annexes
+zinit light-mode for \
+  zdharma-continuum/zinit-annex-as-monitor \
+  zdharma-continuum/zinit-annex-bin-gem-node \
+  zdharma-continuum/zinit-annex-patch-dl \
+  zdharma-continuum/zinit-annex-rust
+
+# completions
+zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
 
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# plugins
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+# installation
+zinit ice as"command" from"gh-r" \
+  atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+  atpull"%atclone" src"init.zsh"
+zinit light starship/starship
 
-export EDITOR=nvim
+zinit ice as"command" from"gh-r" \
+  atclone"./fzf --zsh > init.zsh" \
+  atpull"%atclone" src"init.zsh"
+zinit light junegunn/fzf
 
+zinit ice as"command" from"gh-r" \
+  atclone"./zoxide init --cmd cd zsh > init.zsh" \
+  atpull"%atclone" src"init.zsh"
+zinit light ajeetdsouza/zoxide
+
+zinit ice as"command" from"gh-r" \
+  bpick"*x86_64-unknown-linux-gnu.tar.gz"
+zinit light eza-community/eza
+
+zinit ice as"command" from"gh-r" \
+  mv"bat*/bat -> bat" \
+  pick"bat"
+zinit light sharkdp/bat
+
+zinit ice depth=1 wait lucid pick"nvm.sh"
+zinit light nvm-sh/nvm
+
+# tool
 eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
+# aliases
+alias ls='eza -x --color=always --icons=always --sort=type'
