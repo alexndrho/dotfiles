@@ -1,3 +1,8 @@
+local filename_symbols = {
+  modified = '●',
+  readonly = '',
+}
+
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-mini/mini.icons', 'lewis6991/gitsigns.nvim' },
@@ -28,9 +33,22 @@ return {
         'diagnostics',
       },
       lualine_c = {
-        { 'filename', path = 1 },
+        {
+          'filename',
+          path = 1,
+          symbols = filename_symbols,
+        },
       },
+
       lualine_x = { 'fileformat', 'filetype' },
+    },
+    inactive_sections = {
+      lualine_c = {
+        {
+          'filename',
+          symbols = filename_symbols,
+        },
+      },
     },
   },
 }
