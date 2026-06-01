@@ -36,6 +36,23 @@ return {
         header = header,
         center = {
           menu_item { icon = '', desc = 'Browse files', key = 'e', action = 'Oil' },
+          menu_item {
+            icon = '󰠮',
+            desc = 'Open Obsidian',
+            key = 'o',
+            action = function()
+              local vault_path = tostring(Obsidian.workspace.root)
+              local home_path = vim.fs.joinpath(vault_path, 'home.md')
+
+              vim.cmd('cd ' .. vim.fn.fnameescape(vault_path))
+
+              if vim.fn.filereadable(home_path) == 1 then
+                vim.cmd('edit ' .. vim.fn.fnameescape(home_path))
+              else
+                vim.cmd 'Oil'
+              end
+            end,
+          },
           menu_item { icon = '', desc = 'Find file', key = 'f', action = 'Telescope find_files' },
           menu_item { icon = '', desc = 'Find text', key = 't', action = 'Telescope live_grep' },
           menu_item { icon = '', desc = 'Recent files', key = 'r', action = 'Telescope oldfiles' },
@@ -54,5 +71,8 @@ return {
       },
     }
   end,
-  dependencies = { { 'nvim-mini/mini.icons' } },
+  dependencies = {
+    'nvim-mini/mini.icons',
+    'obsidian-nvim/obsidian.nvim',
+  },
 }
