@@ -1,4 +1,5 @@
 require 'core.options'
 require 'core.autocmds'
 require 'core.keymaps'
+require 'core.diagnostics'
 require 'core.lazy'
