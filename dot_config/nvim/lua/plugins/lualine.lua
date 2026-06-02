@@ -1,6 +1,14 @@
-local filename_symbols = {
-  modified = '●',
-  readonly = '',
+local icons = {
+  branch = '',
+  filename = {
+    modified = '●',
+    readonly = '',
+  },
+  diff = {
+    added = ' ',
+    modified = ' ',
+    removed = ' ',
+  },
 }
 
 return {
@@ -13,11 +21,11 @@ return {
     },
     sections = {
       lualine_b = {
-        { 'branch', icon = '' },
+        { 'branch', icon = icons.branch },
         {
           'diff',
           colored = true,
-          symbols = { added = '+', modified = '~', removed = '-' },
+          symbols = icons.diff,
 
           source = function()
             local gitsigns = vim.b.gitsigns_status_dict
@@ -36,7 +44,7 @@ return {
         {
           'filename',
           path = 1,
-          symbols = filename_symbols,
+          symbols = icons.filename,
         },
       },
 
@@ -46,7 +54,7 @@ return {
       lualine_c = {
         {
           'filename',
-          symbols = filename_symbols,
+          symbols = icons.filename,
         },
       },
     },
