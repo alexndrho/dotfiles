@@ -39,9 +39,6 @@ return {
       default_tags = { 'daily' },
       template = 'templates/daily_template.md',
     },
-    completion = {
-      blink = true,
-    },
     picker = {
       name = 'telescope.nvim',
     },
