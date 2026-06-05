@@ -17,7 +17,6 @@ return {
           animation = function() return 0 end,
         },
       }
-      require('mini.pairs').setup()
 
       vim.api.nvim_create_autocmd('FileType', {
         pattern = { 'dashboard' },
