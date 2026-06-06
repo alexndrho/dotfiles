@@ -48,7 +48,7 @@ return {
         },
       },
 
-      lualine_x = { 'fileformat', 'filetype' },
+      lualine_x = { 'fileformat', 'filetype', 'filesize' },
     },
     inactive_sections = {
       lualine_c = {
