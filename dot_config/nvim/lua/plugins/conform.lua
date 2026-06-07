@@ -27,22 +27,36 @@ return {
         }
       end,
       formatters_by_ft = {
+        sh = { 'shfmt' },
+        bash = { 'shfmt' },
+        zsh = { 'shfmt' },
+
         lua = { 'stylua' },
+
         javascript = { 'prettierd' },
         javascriptreact = { 'prettierd' },
         typescript = { 'prettierd' },
         typescriptreact = { 'prettierd' },
+
         vue = { 'prettierd' },
         svelte = { 'prettierd' },
         astro = { 'prettierd' },
+
         html = { 'prettierd' },
         css = { 'prettierd' },
         scss = { 'prettierd' },
         less = { 'prettierd' },
+
         json = { 'prettierd' },
+        jsonc = { 'prettierd' },
         yaml = { 'prettierd' },
+
         markdown = { 'prettierd' },
+        ['markdown.mdx'] = { 'prettierd' },
+
         graphql = { 'prettierd' },
+
+        kdl = { 'kdlfmt' },
       },
     },
   },
