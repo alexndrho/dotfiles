@@ -1,0 +1,73 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "spacing": 1,
+
+  "modules-left": ["clock"],
+  "modules-center": ["niri/workspaces"],
+  "modules-right": [
+    "tray",
+    "cpu",
+    "memory",
+    "pulseaudio",
+    "bluetooth",
+    "battery",
+    "network",
+  ],
+
+  "clock": {
+    "format": "{:%I:%M %p • %A, %B %d}",
+  },
+
+  "niri/window": {
+    "format": "{title}",
+  },
+
+  "tray": {
+    "spacing": 8,
+  },
+  "cpu": {
+    "interval": 2,
+    "format": " {usage}%",
+    "on-click": "kitty -e btop",
+  },
+  "memory": {
+    "interval": 2,
+    "format": " {percentage}%",
+    "on-click": "kitty -e btop",
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"],
+    },
+    "format-muted": "󰖁",
+    "on-click": "pavucontrol",
+  },
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-connected": " {num_connections}",
+    "on-click": "kitty -e bluetui",
+  },
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": {
+      "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+      "charging": ["󰢟 ", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+    },
+  },
+  "network": {
+    "format-wifi": "{icon}",
+    "format-ethernet": "",
+    "format-linked": "󰈁",
+    "format-disconnected": "󰤭",
+    "format-disabled": "󰤮",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "tooltip-format-wifi": "{essid}",
+    "tooltip-format-ethernet": "{ifname}",
+    "tooltip-format-disconnected": "disconnected",
+    "on-click": "kitty -e nmtui",
+  },
+}

@@ -1,0 +1,44 @@
+# Background
+color=282828
+
+# Inside colors (the ring fill)
+inside-color=282828ff
+inside-clear-color=282828ff
+inside-caps-lock-color=282828ff
+inside-ver-color=282828ff
+inside-wrong-color=282828ff
+
+# Ring colors
+ring-color=45403dff
+ring-clear-color=a9b665ff
+ring-caps-lock-color=d8a657ff
+ring-ver-color=7daea3ff
+ring-wrong-color=ea6962ff
+
+# Key press highlight on ring
+key-hl-color=a9b665ff
+bs-hl-color=ea6962ff
+caps-lock-key-hl-color=d8a657ff
+caps-lock-bs-hl-color=e78a4eff
+
+# Text
+text-color=d4be98ff
+text-clear-color=d4be98ff
+text-caps-lock-color=d8a657ff
+text-ver-color=7daea3ff
+text-wrong-color=ea6962ff
+
+# Separator (line between ring and inside)
+separator-color=00000000
+
+# Line colors (outline of ring)
+line-color=00000000
+line-clear-color=00000000
+line-caps-lock-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+
+# Layout
+indicator-radius=60
+indicator-thickness=10
+font=monospace
