@@ -12,8 +12,8 @@
     "memory",
     "group/audio",
     "bluetooth",
-    "battery",
     "network",
+    "battery",
   ],
 
   "clock": {
@@ -61,13 +61,6 @@
     "format-connected": " {num_connections}",
     "on-click": "kitty -e bluetui",
   },
-  "battery": {
-    "format": "{icon} {capacity}%",
-    "format-icons": {
-      "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-      "charging": ["󰢟 ", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
-    },
-  },
   "network": {
     "format-wifi": "{icon}",
     "format-ethernet": "",
@@ -79,5 +72,12 @@
     "tooltip-format-ethernet": "{ifname}",
     "tooltip-format-disconnected": "disconnected",
     "on-click": "kitty -e nmtui",
+  },
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": {
+      "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+      "charging": ["󰢟 ", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+    },
   },
 }

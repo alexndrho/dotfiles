@@ -15,8 +15,8 @@
 #memory,
 #audio,
 #bluetooth,
-#battery,
-#network {
+#network,
+#battery {
   background-color: @bg1;
   color: @fg1;
   border-radius: 10px;
