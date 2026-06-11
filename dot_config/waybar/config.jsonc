@@ -4,8 +4,8 @@
   "height": 32,
   "spacing": 1,
 
-  "modules-left": ["clock", "niri/window"],
-  "modules-center": ["niri/workspaces"],
+  "modules-left": ["niri/workspaces", "niri/window"],
+  "modules-center": ["clock"],
   "modules-right": [
     "tray",
     "cpu",
@@ -16,13 +16,14 @@
     "battery",
   ],
 
-  "clock": {
-    "format": "{:%I:%M %p • %A, %B %d}",
-  },
   "niri/window": {
     "icon": true,
     "icon-size": 20,
     "max-length": 30,
+  },
+
+  "clock": {
+    "format": "{:%I:%M %p • %A, %B %d}",
   },
 
   "tray": {
