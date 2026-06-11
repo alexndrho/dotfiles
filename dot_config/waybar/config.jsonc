@@ -4,7 +4,7 @@
   "height": 32,
   "spacing": 1,
 
-  "modules-left": ["clock"],
+  "modules-left": ["clock", "niri/window"],
   "modules-center": ["niri/workspaces"],
   "modules-right": [
     "tray",
@@ -19,9 +19,9 @@
   "clock": {
     "format": "{:%I:%M %p • %A, %B %d}",
   },
-
   "niri/window": {
-    "format": "{title}",
+    "icon": true,
+    "max-length": 30,
   },
 
   "tray": {
