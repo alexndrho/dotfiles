@@ -20,8 +20,9 @@
   background-color: @bg1;
   color: @fg1;
   border-radius: 10px;
-  padding: 2px 12px;
-  margin: 4px 2px;
+  padding: 6px 12px;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 #waybar > box {
@@ -31,8 +32,7 @@
 
 #workspaces button {
   background-color: @bg2;
-  padding-left: 18px;
-  padding-right: 18px;
+  padding: 0 18px;
   color: @fg2;
 }
 

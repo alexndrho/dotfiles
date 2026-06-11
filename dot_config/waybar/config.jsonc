@@ -21,6 +21,7 @@
   },
   "niri/window": {
     "icon": true,
+    "icon-size": 20,
     "max-length": 30,
   },
 
