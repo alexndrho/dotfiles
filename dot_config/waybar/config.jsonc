@@ -10,7 +10,7 @@
     "tray",
     "cpu",
     "memory",
-    "pulseaudio",
+    "group/audio",
     "bluetooth",
     "battery",
     "network",
@@ -37,6 +37,10 @@
     "format": " {percentage}%",
     "on-click": "kitty -e btop",
   },
+  "group/audio": {
+    "orientation": "horizontal",
+    "modules": ["pulseaudio", "pulseaudio/slider"],
+  },
   "pulseaudio": {
     "format": "{icon}",
     "format-icons": {
@@ -44,6 +48,11 @@
     },
     "format-muted": "󰖁",
     "on-click": "pavucontrol",
+  },
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal",
   },
   "bluetooth": {
     "format": "",

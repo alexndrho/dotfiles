@@ -13,12 +13,12 @@
 #tray,
 #cpu,
 #memory,
-#pulseaudio,
+#audio,
 #bluetooth,
 #battery,
 #network {
-  background-color: @bg0;
-  color: @fg0;
+  background-color: @bg1;
+  color: @fg1;
   border-radius: 10px;
   padding: 2px 12px;
   margin: 4px 2px;
@@ -30,29 +30,53 @@
 }
 
 #workspaces button {
-  background-color: @bg1;
+  background-color: @bg2;
   padding-left: 18px;
   padding-right: 18px;
-  color: @fg1;
+  color: @fg2;
 }
 
 #workspaces button:hover {
   background-color: @yellow;
-  color: @bg1;
+  color: @bg2;
 }
 
 #workspaces button.active {
   background-color: @green;
-  color: @bg1;
+  color: @bg2;
+}
+
+#pulseaudio-slider {
+  padding: 0;
+  margin-left: 8px;
+}
+#pulseaudio-slider slider {
+  min-height: 0px;
+  min-width: 0px;
+  opacity: 0;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+}
+#pulseaudio-slider trough {
+  min-height: 8px;
+  min-width: 80px;
+  border-radius: 5px;
+  background-color: @bg0;
+}
+#pulseaudio-slider highlight {
+  min-width: 8px;
+  border-radius: 5px;
+  background-color: @green;
 }
 
 tooltip > box {
   padding: 6px 8px;
-  border: 2px solid @fg0;
+  border: 2px solid @fg1;
   border-radius: 10px;
-  background-color: @bg0;
+  background-color: @bg1;
 }
 
 tooltip label {
-  color: @fg0;
+  color: @fg1;
 }
