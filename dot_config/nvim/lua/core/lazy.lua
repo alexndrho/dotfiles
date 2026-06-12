@@ -22,15 +22,6 @@ require('lazy').setup {
       opts = {},
     },
     { 'NMAC427/guess-indent.nvim', opts = {} },
-    {
-      'vyfor/cord.nvim',
-      opts = {
-        display = {
-          theme = 'minecraft',
-        },
-      },
-    },
-
     { import = 'plugins' },
   },
 }
