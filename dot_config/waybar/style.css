@@ -70,6 +70,13 @@
   background-color: @green;
 }
 
+#battery.warning {
+  color: @yellow;
+}
+#battery.critical {
+  color: @red;
+}
+
 tooltip > box,
 menu {
   padding: 6px 8px;
