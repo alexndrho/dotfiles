@@ -79,10 +79,6 @@ zinit light sxyazi/yazi
 zinit ice depth=1 wait lucid pick"nvm.sh"
 zinit light nvm-sh/nvm
 
-# tool
-eval "$(starship init zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-
 function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
   command yazi "$@" --cwd-file="$tmp"
