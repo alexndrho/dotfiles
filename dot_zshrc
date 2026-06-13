@@ -71,12 +71,25 @@ zinit ice as"command" from"gh-r" \
   pick"bat"
 zinit light sharkdp/bat
 
+zinit ice as"command" from"gh-r" \
+  bpick"*x86_64-unknown-linux-gnu.zip" \
+  sbin"yazi-x86_64-unknown-linux-gnu/yazi;yazi-x86_64-unknown-linux-gnu/ya"
+zinit light sxyazi/yazi
+
 zinit ice depth=1 wait lucid pick"nvm.sh"
 zinit light nvm-sh/nvm
 
 # tool
 eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  command yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd <"$tmp"
+  [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+  command rm -f -- "$tmp"
+}
 
 # aliases
 alias ls='eza -x --color=always --icons=always --sort=type'
