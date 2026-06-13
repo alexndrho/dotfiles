@@ -89,3 +89,4 @@ function y() {
 
 # aliases
 alias ls='eza -x --color=always --icons=always --sort=type'
+alias lg='lazygit'
