@@ -31,12 +31,12 @@
   },
   "cpu": {
     "interval": 2,
-    "format": " {usage}%",
+    "format": " {usage:>3}%",
     "on-click": "kitty -e btop",
   },
   "memory": {
     "interval": 2,
-    "format": " {percentage}%",
+    "format": " {percentage:>3}%",
     "on-click": "kitty -e btop",
   },
   "group/audio": {
