@@ -14,6 +14,7 @@ return {
           local palette = vim.fn['gruvbox_material#get_palette'](config.background, config.foreground, config.colors_override)
           local set_hl = vim.fn['gruvbox_material#highlight']
 
+          -- oil
           set_hl('OilGitAdded', palette.green, palette.none)
           set_hl('OilGitModified', palette.yellow, palette.none)
           set_hl('OilGitModifiedStaged', palette.yellow, palette.none)
@@ -24,6 +25,10 @@ return {
           set_hl('OilGitConflict', palette.orange, palette.none)
           set_hl('OilGitUntracked', palette.blue, palette.none)
           set_hl('OilGitIgnored', palette.grey0, palette.none)
+
+          -- dap
+          set_hl('DapBreak', palette.red, palette.none)
+          set_hl('DapStop', palette.yellow, palette.none)
         end,
       })
 
