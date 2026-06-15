@@ -5,7 +5,7 @@
   "spacing": 1,
 
   "modules-left": ["niri/workspaces", "niri/window"],
-  "modules-center": ["clock"],
+  "modules-center": ["custom/weather", "clock"],
   "modules-right": [
     "tray",
     "cpu",
@@ -22,6 +22,12 @@
     "max-length": 20,
   },
 
+  "custom/weather": {
+    "exec": "~/.config/waybar/scripts/weather",
+    "format": "{}",
+    "interval": 600,
+    "return-type": "json",
+  },
   "clock": {
     "format": "{:%I:%M %p • %A, %B %d}",
   },
