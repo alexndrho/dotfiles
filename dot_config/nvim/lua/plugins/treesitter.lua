@@ -11,6 +11,7 @@ return {
         'bash',
         'c',
         'diff',
+        'python',
 
         'vim',
         'vimdoc',

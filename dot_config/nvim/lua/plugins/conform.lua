@@ -32,6 +32,7 @@ return {
         zsh = { 'shfmt' },
 
         lua = { 'stylua' },
+        python = { 'ruff_format' },
 
         javascript = { 'prettierd' },
         javascriptreact = { 'prettierd' },

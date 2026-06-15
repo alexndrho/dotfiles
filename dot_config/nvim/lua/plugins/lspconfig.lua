@@ -4,14 +4,16 @@ return {
     opts = {
       ensure_installed = {
         'lua_ls',
-        'astro',
+        'pyright',
+
+        'vtsls',
+        'intelephense',
         'html',
         'cssls',
         'emmet_language_server',
-        'vtsls',
-        'intelephense',
-        'svelte',
         'tailwindcss',
+        'astro',
+        'svelte',
         'prismals',
       },
     },
@@ -34,6 +36,7 @@ return {
           ensure_installed = {
             'shfmt',
             'stylua',
+            'ruff',
             'prettierd',
             'eslint',
             'kdlfmt',
