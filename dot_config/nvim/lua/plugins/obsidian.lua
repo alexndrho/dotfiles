@@ -11,6 +11,10 @@ return {
         path = '~/vaults/personal',
       },
     },
+    ---@diagnostic disable-next-line: missing-fields
+    ui = {
+      enable = false,
+    },
     templates = {
       folder = 'templates',
       date_format = '%A, %B %d, %Y',
