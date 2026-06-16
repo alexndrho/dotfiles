@@ -54,11 +54,6 @@ zinit ice as"command" from"gh-r" \
 zinit light starship/starship
 
 zinit ice as"command" from"gh-r" \
-  atclone"./fzf --zsh > init.zsh" \
-  atpull"%atclone" src"init.zsh"
-zinit light junegunn/fzf
-
-zinit ice as"command" from"gh-r" \
   atclone"./zoxide init --cmd cd zsh > init.zsh" \
   atpull"%atclone" src"init.zsh"
 zinit light ajeetdsouza/zoxide
@@ -67,7 +62,13 @@ zinit ice as"command" from"gh-r" \
   bpick"*x86_64-unknown-linux-gnu.tar.gz"
 zinit light eza-community/eza
 
-zinit ice as"command" from"gh-r" \
+# non esssential install
+zinit ice as"command" from"gh-r" wait lucid \
+  atclone"./fzf --zsh > init.zsh" \
+  atpull"%atclone" src"init.zsh"
+zinit light junegunn/fzf
+
+zinit ice as"command" from"gh-r" wait lucid \
   mv"bat*/bat -> bat" \
   pick"bat"
 zinit light sharkdp/bat
@@ -77,7 +78,7 @@ zinit ice as"command" from"gh-r" wait lucid \
   pick"lazygit"
 zinit light jesseduffield/lazygit
 
-zinit ice as"command" from"gh-r" \
+zinit ice as"command" from"gh-r" wait lucid \
   bpick"*x86_64-unknown-linux-gnu.zip" \
   sbin"yazi-x86_64-unknown-linux-gnu/yazi;yazi-x86_64-unknown-linux-gnu/ya"
 zinit light sxyazi/yazi
