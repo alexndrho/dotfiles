@@ -72,6 +72,11 @@ zinit ice as"command" from"gh-r" \
   pick"bat"
 zinit light sharkdp/bat
 
+zinit ice as"command" from"gh-r" wait lucid \
+  bpick"*Linux_x86_64.tar.gz" \
+  pick"lazygit"
+zinit light jesseduffield/lazygit
+
 zinit ice as"command" from"gh-r" \
   bpick"*x86_64-unknown-linux-gnu.zip" \
   sbin"yazi-x86_64-unknown-linux-gnu/yazi;yazi-x86_64-unknown-linux-gnu/ya"
