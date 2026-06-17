@@ -30,6 +30,7 @@
   },
   "clock": {
     "format": "{:%I:%M %p • %A, %B %d}",
+    "tooltip": false,
   },
 
   "tray": {
