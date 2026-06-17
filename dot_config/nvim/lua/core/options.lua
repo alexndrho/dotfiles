@@ -1,6 +1,6 @@
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.mouse = 'a'
+vim.o.mouse = 'nv'
 vim.o.linebreak = true
 vim.o.breakindent = true
 vim.o.ignorecase = true
