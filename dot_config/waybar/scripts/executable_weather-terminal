@@ -1,0 +1,4 @@
+#!/bin/sh
+
+curl --fail --silent --show-error --location 'https://wttr.in?F' 2>&1 |
+    less --RAW-CONTROL-CHARS

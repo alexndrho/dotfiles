@@ -26,6 +26,7 @@
     "exec": "~/.config/waybar/scripts/weather",
     "format": "{}",
     "interval": 600,
+    "on-click": "kitty --class waybar-weather --title Weather ~/.config/waybar/scripts/weather-terminal",
     "return-type": "json",
   },
   "clock": {
