@@ -9,6 +9,7 @@ return {
       local parsers = {
         'query',
         'bash',
+        'dockerfile',
         'c',
         'diff',
         'python',
