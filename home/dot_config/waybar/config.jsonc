@@ -32,6 +32,7 @@
   "clock": {
     "format": "{:%I:%M %p • %A, %B %d}",
     "tooltip": false,
+    "on-click": "thunderbird -calendar",
   },
 
   "tray": {
