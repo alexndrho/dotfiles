@@ -1,13 +1,43 @@
 #!/usr/bin/env python3
 
 import sys
+import os
 import requests
-from typing import Final
+import json
+from pathlib import Path
+from typing import Final, NoReturn
 
 from common.waybar import waybar
 
-
 DEFAULT_ICON: Final = ""
+
+
+def weather_unavailable() -> NoReturn:
+    waybar(f"{DEFAULT_ICON} N/A", "Weather unavailable")
+    sys.exit(0)
+
+
+def cache_path() -> Path:
+    xdg = os.environ.get("XDG_CACHE_HOME")
+    if xdg:
+        base = Path(xdg)
+    else:
+        base = Path.home() / ".cache"
+    return base / "waybar" / "weather.json"
+
+
+def write_cache(data: dict) -> None:
+    path = cache_path()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data), encoding="utf-8")
+
+
+def read_cache() -> dict | None:
+    path = cache_path()
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        return None
 
 
 def weather_icon(condition_code):
@@ -53,22 +83,23 @@ def weather_icon(condition_code):
 try:
     response = requests.get("https://wttr.in?format=j1", timeout=5)
     response.raise_for_status()
-
     weather = response.json()
+    write_cache(weather)
+except (requests.RequestException, ValueError):
+    weather = read_cache()  # fall back to cache
+    if weather is None:
+        weather_unavailable()
+
+try:
     current_condition = weather["current_condition"][0]
-
     nearest_area = weather["nearest_area"][0]
-    region = nearest_area["region"][0]["value"]
+    location = nearest_area["region"][0]["value"]
 
-    location = f"{region}"
+    icon = weather_icon(current_condition["weatherCode"])
+    temp = current_condition["temp_C"]
+except (KeyError, IndexError, TypeError):
+    weather_unavailable()
 
-
-except (requests.RequestException, KeyError, IndexError, ValueError):
-    waybar(f"{DEFAULT_ICON} N/A", "Weather unavailable")
-    sys.exit(0)
-
-icon = weather_icon(current_condition["weatherCode"])
-temp = current_condition["temp_C"]
 
 tooltip = (
     f"{current_condition['weatherDesc'][0]['value']}\n"
