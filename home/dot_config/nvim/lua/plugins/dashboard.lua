@@ -37,7 +37,7 @@ return {
         center = {
           menu_item { icon = '', desc = 'Browse files', key = 'e', action = 'Oil' },
           menu_item {
-            icon = '󰠮',
+            icon = '',
             desc = 'Open Obsidian',
             key = 'o',
             action = function()
