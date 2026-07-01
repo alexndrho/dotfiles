@@ -26,7 +26,7 @@ return {
           if not (year and month and day) then return id end
 
           return tostring(os.date(
-            '%A, %B %d, %Y',
+            '%A, %B %-d, %Y',
             os.time {
               year = year,
               month = month,
