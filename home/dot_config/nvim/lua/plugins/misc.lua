@@ -9,6 +9,8 @@ return {
         { '<leader>b', group = 'Buffer' },
         { '<leader>g', group = 'Git' },
         { '<leader>h', group = 'Git Hunk', mode = { 'n', 'v' } },
+        { '<leader>o', group = 'Obsidian', icon = '', mode = { 'n', 'v' } },
+        { '<leader>os', group = 'Sort', mode = { 'v' } },
         { '<leader>q', group = 'Quit/Session' },
         { '<leader>s', group = 'Search', mode = { 'n', 'v' } },
         { '<leader>t', group = 'Toggle' },

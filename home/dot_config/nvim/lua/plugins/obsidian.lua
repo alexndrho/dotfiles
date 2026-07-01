@@ -53,11 +53,15 @@ return {
       enter_note = function()
         vim.b.disable_format_on_save = true
 
-        vim.keymap.set('n', '<leader>oo', '<cmd>Obsidian<CR>', { buffer = true, desc = 'Open Obsidian' })
+        -- normal mode
+        vim.keymap.set('n', '<leader>oo', '<cmd>Obsidian<cr>', { buffer = true, desc = 'Open Obsidian' })
         vim.keymap.set('n', '<leader>tc', '<cmd>Obsidian toggle_checkbox<cr>', {
           buffer = true,
           desc = 'Toggle checkbox',
         })
+
+        -- visual mode
+        vim.keymap.set('v', '<leader>osc', [[:'<,'>sort i /^\s*[-*+]\s\[.\]\s*/<cr>]], { buffer = true, desc = 'Sort checkboxes items by text' })
       end,
     },
   },
