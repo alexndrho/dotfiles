@@ -26,6 +26,13 @@ return {
           lsp_format = 'fallback',
         }
       end,
+      formatters = {
+        kdlfmt = {
+          command = 'kdlfmt',
+          args = { 'format', '--kdl-version', 'v1', '-' },
+          stdin = true,
+        },
+      },
       formatters_by_ft = {
         sh = { 'shfmt' },
         bash = { 'shfmt' },
