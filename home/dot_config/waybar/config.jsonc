@@ -11,7 +11,6 @@
     "cpu",
     "memory",
     "group/audio",
-    "bluetooth",
     "network",
     "battery",
   ],
@@ -59,18 +58,19 @@
     },
     "format-muted": "󰖁",
     "on-click": "pavucontrol",
+    "on-click-right": "kitty -e bluetui",
   },
   "pulseaudio/slider": {
     "min": 0,
     "max": 100,
     "orientation": "horizontal",
   },
-  "bluetooth": {
-    "format": "",
-    "format-disabled": "󰂲",
-    "format-connected": " {num_connections}",
-    "on-click": "kitty -e bluetui",
-  },
+  // "bluetooth": {
+  //   "format": "",
+  //   "format-disabled": "󰂲",
+  //   "format-connected": " {num_connections}",
+  //   "on-click": "kitty -e bluetui",
+  // },
   "network": {
     "format-wifi": "{icon}",
     "format-ethernet": "",

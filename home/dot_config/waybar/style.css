@@ -15,7 +15,6 @@
 #cpu,
 #memory,
 #audio,
-#bluetooth,
 #network,
 #battery {
   background-color: @bg1;
