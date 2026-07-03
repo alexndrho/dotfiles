@@ -113,4 +113,9 @@ return {
       movement('[C', move.goto_previous_end, '@class.outer', 'textobjects', 'Jump to previous class end')
     end,
   },
+
+  {
+    'davidmh/mdx.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+  },
 }
