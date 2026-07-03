@@ -1,3 +1,4 @@
+prefer-no-csd
 include "autostart.kdl"
 include "keybinds.kdl"
 include "rules.kdl"
