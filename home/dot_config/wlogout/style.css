@@ -1,0 +1,67 @@
+@define-color bg0 #282828;
+@define-color bg1 #32302f;
+@define-color bg2 #3c3836;
+@define-color bg3 #45403d;
+
+@define-color fg0 #d4be98;
+@define-color fg1 #ddc7a1;
+@define-color fg2 #c7b89d;
+@define-color fg3 #a89984;
+
+@define-color green #a9b665;
+
+* {
+  background-image: none;
+  box-shadow: none;
+  font-family: "Inter";
+  font-size: 1em;
+}
+
+window {
+  background-color: alpha(@bg0, 0.5);
+}
+
+button {
+  margin: 8px;
+  border-radius: 12px;
+  border-color: @fg1;
+  text-decoration-color: @fg1;
+  color: @fg1;
+  background-color: alpha(@bg1, 0.6);
+  border-style: solid;
+  border-width: 4px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 25%;
+}
+
+button:focus,
+button:active,
+button:hover {
+  background-color: alpha(@green, 0.6);
+  outline-style: none;
+}
+
+#lock {
+  background-image: image(url("icons/lock.svg"));
+}
+
+#logout {
+  background-image: image(url("icons/logout.svg"));
+}
+
+#suspend {
+  background-image: image(url("icons/suspend.svg"));
+}
+
+#hibernate {
+  background-image: image(url("icons/hibernate.svg"));
+}
+
+#shutdown {
+  background-image: image(url("icons/shutdown.svg"));
+}
+
+#reboot {
+  background-image: image(url("icons/reboot.svg"));
+}
