@@ -9,6 +9,7 @@ window-rule {
     match app-id="discord$"
     match app-id="vesktop$"
     match app-id="net.thunderbird.Thunderbird$"
+    match app-id="[Oo]bsidian$"
     match app-id="waybar-weather$"
     open-maximized true
 }
@@ -16,4 +17,3 @@ window-rule {
     match app-id="firefox$" title="^Picture-in-Picture$"
     open-floating true
 }
-
