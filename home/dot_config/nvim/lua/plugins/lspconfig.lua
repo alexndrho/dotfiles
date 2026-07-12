@@ -17,6 +17,9 @@ return {
         'svelte',
         'prismals',
       },
+      automatic_enable = {
+        exclude = { 'qmlls' },
+      },
     },
     dependencies = {
       {
