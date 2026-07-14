@@ -3,7 +3,7 @@ import QtQuick
 import QtQuick.Layouts
 
 import qs.config
-import qs.modules.bar.widgets
+import qs.modules.bar.system
 
 PanelWindow {
   id: bar
@@ -13,7 +13,7 @@ PanelWindow {
     right: true
   }
 
-  property int padX: Theme.spacingLg
+  property int padX: Theme.spacingMd
   property int padY: Theme.spacingSm
 
   implicitHeight: Math.max(
@@ -22,7 +22,7 @@ PanelWindow {
     rightContent.implicitHeight
   ) + padY * 2
 
-  color: Theme.bg0
+  color: 'transparent'
 
   Item {
     anchors {
@@ -69,9 +69,7 @@ PanelWindow {
       }
       spacing: Theme.spacingLg
 
-      Audio {}
-      Network {}
-      Battery {}
+      SystemTray {}
     }
   }
 
