@@ -52,10 +52,5 @@ Item {
       font.pixelSize: 16
       color: battery.critical ? Theme.yellow : Theme.fg0
     }
-
-    // StyledText {
-    //   color: battery.critical ? Theme.yellow : Theme.fg0
-    //   text: battery.pct + "%"
-    // }
   }
 }

@@ -6,7 +6,7 @@ import qs.config
 Rectangle {
   default property alias content: content.data
   property int padX: Theme.spacingMd
-  property int padY: Theme.spacingSm
+  property int padY: Theme.spacingMd
 
   implicitWidth: content.implicitWidth + padX * 2
   implicitHeight: content.implicitHeight + padY * 2
