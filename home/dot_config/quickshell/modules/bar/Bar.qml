@@ -16,17 +16,19 @@ PanelWindow {
   property int padX: Theme.spacingMd
   property int padY: Theme.spacingSm
 
+  // Only apply padding to the top side.
   implicitHeight: Math.max(
     leftContent.implicitHeight,
     centerContent.implicitHeight,
     rightContent.implicitHeight
-  ) + padY * 2
+  ) + padY
 
   color: 'transparent'
 
   Item {
     anchors {
       fill: parent
+      topMargin: bar.padY
       leftMargin: bar.padX
       rightMargin: bar.padX
     }
