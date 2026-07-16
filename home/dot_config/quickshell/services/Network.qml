@@ -1,15 +1,8 @@
+pragma Singleton
 import Quickshell
 import Quickshell.Networking
-import QtQuick
 
-import qs.config
-import qs.components
-
-Item {
-  id: network
-  implicitWidth: label.implicitWidth
-  implicitHeight: label.implicitHeight
-
+Singleton {
   readonly property var connectedWifiNetwork: {
     const devices = Networking.devices.values;
 
@@ -42,12 +35,5 @@ Item {
     if (signalStrength >= 50) return "󰤥"
     if (signalStrength >= 25) return "󰤢"
     return "󰤟"
-  }
-
-  StyledText {
-    id: label
-    text: network.icon
-    font.pixelSize: Theme.fontSizeLg
-    color: network.connected ? Theme.fg0 : Theme.fg3
   }
 }

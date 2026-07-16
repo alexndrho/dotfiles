@@ -1,16 +1,9 @@
+pragma Singleton
 import Quickshell
 import Quickshell.Services.Pipewire
-import QtQuick
 
-import qs.config
-import qs.components
-
-Item {
-  id: audio
-
-  implicitWidth: label.implicitWidth
-  implicitHeight: label.implicitHeight
-
+Singleton {
+  id: root
   readonly property var sink: Pipewire.defaultAudioSink
   readonly property var sinkAudio: sink ? sink.audio : null
   readonly property int volume: sinkAudio
@@ -26,22 +19,6 @@ Item {
   }
 
   PwObjectTracker {
-    objects: [audio.sink]
-  }
-
-  StyledText {
-    id: label
-    text: audio.icon
-    font.pixelSize: Theme.fontSizeLg
-    color: audio.muted ? Theme.fg3 : Theme.fg0
-  }
-
-  MouseArea {
-    anchors.fill: parent
-    cursorShape: Qt.PointingHandCursor
-
-    onClicked: {
-      if (audio.sinkAudio) audio.sinkAudio.muted = !audio.sinkAudio.muted
-    }
+    objects: [root.sink]
   }
 }
