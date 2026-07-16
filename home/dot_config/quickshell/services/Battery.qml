@@ -10,15 +10,15 @@ Singleton {
 
   readonly property string icon: {
     if (charging) {
-      if (pct == 100) return "󰂅"
-      if (pct >= 90) return "󰂋"
-      if (pct >= 80) return "󰂊"
-      if (pct >= 70) return "󰢞"
-      if (pct >= 60) return "󰂉"
-      if (pct >= 50) return "󰢝"
-      if (pct >= 40) return "󰂈"
-      if (pct >= 30) return "󰂇"
-      if (pct >= 20) return "󰂆"
+      if (pct >= 90) return "󰂅"
+      if (pct >= 80) return "󰂋"
+      if (pct >= 70) return "󰂊"
+      if (pct >= 60) return "󰢞"
+      if (pct >= 50) return "󰂉"
+      if (pct >= 40) return "󰢝"
+      if (pct >= 30) return "󰂈"
+      if (pct >= 20) return "󰂇"
+      if (pct >= 10) return "󰂆"
       return "󰢜"
     }
 
