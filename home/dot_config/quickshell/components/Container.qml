@@ -5,6 +5,7 @@ import qs.config
 
 Rectangle {
   default property alias content: content.data
+  property alias overlayContent: overlayContent.data
   property int padX: Theme.spacingMd
   property int padY: Theme.spacingMd
 
@@ -18,5 +19,10 @@ Rectangle {
     anchors.centerIn: parent
     implicitWidth: childrenRect.width
     implicitHeight: childrenRect.height
+  }
+
+  Item {
+    id: overlayContent
+    anchors.fill: parent
   }
 }

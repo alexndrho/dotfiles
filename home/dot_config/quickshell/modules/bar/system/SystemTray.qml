@@ -8,6 +8,9 @@ import qs.modules.bar
 import qs.services
 
 Pill {
+  id: systemTray
+  signal clicked(MouseEvent mouse)
+
   RowLayout {
     spacing: Theme.spacingMd
 
@@ -27,7 +30,14 @@ Pill {
       text: Battery.icon
       font.pixelSize: Theme.fontSizeLg
       color: Battery.critical ? Theme.yellow : Theme.fg0
-
     }
   }
+
+  overlayContent: [
+  MouseArea {
+    anchors.fill: parent
+    cursorShape: Qt.PointingHandCursor
+    onClicked: mouse => systemTray.clicked(mouse)
+  }
+  ]
 }

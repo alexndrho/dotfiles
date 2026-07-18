@@ -26,6 +26,7 @@ PanelWindow {
   color: 'transparent'
 
   Item {
+    id: content
     anchors {
       fill: parent
       topMargin: bar.padY
@@ -71,8 +72,21 @@ PanelWindow {
       }
       spacing: Theme.spacingLg
 
-      SystemTray {}
+      SystemTray {
+        onClicked: {
+          systemPopup.visible = !systemPopup.visible
+        }
+      }
+
+      SystemPopup {
+        id: systemPopup
+        anchor {
+          item: content
+          edges: Edges.Bottom | Edges.Right
+          gravity: Edges.Bottom | Edges.Left
+          margins.bottom: -Theme.spacingMd
+        }
+      }
     }
   }
-
 }
