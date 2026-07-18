@@ -39,7 +39,7 @@ Pill {
 
         Behavior on implicitWidth {
           NumberAnimation {
-            duration: 200
+            duration: Theme.animationDurationMd
             easing.type: Easing.OutCubic
           }
         }
@@ -54,7 +54,7 @@ Pill {
 
           Behavior on color {
             ColorAnimation {
-              duration: 200
+              duration: Theme.animationDurationMd
               easing.type: Easing.OutCubic
             }
           }
@@ -69,7 +69,7 @@ Pill {
 
           Behavior on color {
             ColorAnimation {
-              duration: 200
+              duration: Theme.animationDurationMd
               easing.type: Easing.OutCubic
             }
           }
