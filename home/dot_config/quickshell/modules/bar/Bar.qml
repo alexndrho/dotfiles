@@ -74,7 +74,7 @@ PanelWindow {
 
       SystemTray {
         onClicked: {
-          systemPopup.visible = !systemPopup.visible
+          systemPopup.opened = !systemPopup.opened
         }
       }
 
