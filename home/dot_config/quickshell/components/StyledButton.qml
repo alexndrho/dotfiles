@@ -1,38 +1,45 @@
 import Quickshell
+import Quickshell.Widgets
 import QtQuick
 import QtQuick.Layouts
 
 import qs.config
 import qs.components
 
-Rectangle {
+WrapperMouseArea {
   id: root
   required property string icon
   required property string label
+
   property int padX: Theme.spacingMd
   property int padY: Theme.spacingSm
   property color backgroundColor: Theme.green
   property color foregroundColor: Theme.bg0
 
-  color: backgroundColor
-  radius: Theme.radiusMd
+  property alias radius: content.radius
 
-  implicitWidth: content.implicitWidth + padX * 2
-  implicitHeight: content.implicitHeight + padY * 2
+  hoverEnabled: true
+  cursorShape: Qt.PointingHandCursor
 
-  RowLayout {
+  Container {
     id: content
-    anchors.centerIn: parent
-    spacing: Theme.spacingXs
+    padX: root.padX
+    padY: root.padY
+    color: root.backgroundColor
 
-    StyledText {
-      text: root.icon
-      color: root.foregroundColor
-    }
+    RowLayout {
+      anchors.centerIn: parent
+      spacing: Theme.spacingXs
 
-    StyledText {
-      text: root.label
-      color: root.foregroundColor
+      StyledText {
+        text: root.icon
+        color: root.foregroundColor
+      }
+
+      StyledText {
+        text: root.label
+        color: root.foregroundColor
+      }
     }
   }
 }
