@@ -8,7 +8,7 @@ import qs.components
 import qs.services
 
 ColumnLayout {
-  id: contentColumn
+  id: content
   spacing: Theme.spacingMd
 
   property int iconPreferredWidth: Theme.spacingMd
