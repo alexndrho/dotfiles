@@ -12,9 +12,23 @@ PopupWindow {
 
   implicitWidth: content.implicitWidth
   implicitHeight: content.implicitHeight
-  visible: opened || content.opacity > 0
+  visible: false
   color: "transparent"
   grabFocus: true
+
+  onOpenedChanged: {
+    if (opened) {
+      visible = true
+    } else if (content.opacity <= 0) {
+      visible = false
+    }
+  }
+
+  onVisibleChanged: {
+    if (!visible && opened) {
+      opened = false
+    }
+  }
 
   Container {
     id: content
