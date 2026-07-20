@@ -28,7 +28,6 @@ WrapperMouseArea {
     color: root.backgroundColor
 
     RowLayout {
-      anchors.centerIn: parent
       spacing: Theme.spacingXs
 
       StyledText {
