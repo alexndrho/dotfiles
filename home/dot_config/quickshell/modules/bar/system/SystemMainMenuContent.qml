@@ -8,10 +8,13 @@ import qs.components
 import qs.services
 
 ColumnLayout {
-  id: content
+  id: root
   spacing: Theme.spacingMd
 
   property int iconPreferredWidth: Theme.spacingMd
+
+  signal wifiRequested()
+  signal bluetoothRequested()
 
   RowLayout {
     spacing: Theme.spacingXs
@@ -32,7 +35,7 @@ ColumnLayout {
     spacing: Theme.spacingXs
 
     StyledText {
-      Layout.preferredWidth: content.iconPreferredWidth
+      Layout.preferredWidth: root.iconPreferredWidth
       text: Brightness.icon
       font.pixelSize: Theme.fontSizeLg
     }
@@ -51,7 +54,7 @@ ColumnLayout {
   RowLayout {
     spacing: Theme.spacingXs
     StyledText {
-      Layout.preferredWidth: content.iconPreferredWidth
+      Layout.preferredWidth: root.iconPreferredWidth
       text: Audio.icon
       font.pixelSize: Theme.fontSizeLg
       color: !Audio.muted ? Theme.fg0 : Theme.fg3
@@ -87,11 +90,13 @@ ColumnLayout {
       model: [
       {
         icon: "󰤨",
-        label: "Wifi"
+        label: "Wifi",
+        action: () => root.wifiRequested()
       },
       {
         icon: "",
-        label: "Bluetooth"
+        label: "Bluetooth",
+        // action: () => root.bluetoothRequested()
       }
       ]
 
@@ -100,6 +105,7 @@ ColumnLayout {
         Layout.fillWidth: true
         icon: modelData.icon
         label: modelData.label
+        onClicked: modelData.action()
       }
     }
   }

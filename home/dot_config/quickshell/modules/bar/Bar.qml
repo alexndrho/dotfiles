@@ -22,8 +22,8 @@ PanelWindow {
     centerContent.implicitHeight,
     rightContent.implicitHeight
   ) + padY
-
   color: 'transparent'
+  focusable: true
 
   Item {
     id: content

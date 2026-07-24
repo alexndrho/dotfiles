@@ -8,7 +8,7 @@ import qs.components
 
 WrapperMouseArea {
   id: root
-  required property string icon
+  property string icon
   required property string label
 
   property int padX: Theme.spacingMd
@@ -18,8 +18,9 @@ WrapperMouseArea {
 
   property alias radius: content.radius
 
-  hoverEnabled: true
-  cursorShape: Qt.PointingHandCursor
+  opacity: root.enabled ? 1 : 0.6
+  hoverEnabled: root.enabled
+  cursorShape: root.enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
 
   Container {
     id: content
@@ -33,6 +34,7 @@ WrapperMouseArea {
       StyledText {
         text: root.icon
         color: root.foregroundColor
+        visible: root.icon
       }
 
       StyledText {

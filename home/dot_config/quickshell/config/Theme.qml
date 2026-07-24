@@ -4,6 +4,8 @@ import Quickshell
 import QtQuick
 
 Singleton {
+  readonly property string fontFamily: 'Maple Mono NF'
+
   //colors
   readonly property color bg0: "#282828"
   readonly property color bg1: "#32302f"

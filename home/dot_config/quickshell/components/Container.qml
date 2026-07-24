@@ -12,7 +12,7 @@ Rectangle {
   implicitWidth: content.implicitWidth + padX * 2
   implicitHeight: content.implicitHeight + padY * 2
   color: Theme.bg0
-  radius: Theme.radiusMd
+  radius: Theme.radiusLg
 
   Item {
     id: content

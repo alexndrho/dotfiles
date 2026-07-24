@@ -3,6 +3,9 @@ import Quickshell
 import Quickshell.Networking
 
 Singleton {
+  readonly property bool wifiEnabled: Networking.wifiEnabled
+  readonly property bool wifiAvailable: Networking.wifiHardwareEnabled
+
   readonly property var connectedWifiNetwork: {
     const devices = Networking.devices.values;
 
@@ -31,9 +34,35 @@ Singleton {
   readonly property string icon: {
     if (wiredConnected) return "";
     if (!connected) return "󰤭";
-    if (signalStrength >= 75) return "󰤨"
-    if (signalStrength >= 50) return "󰤥"
-    if (signalStrength >= 25) return "󰤢"
-    return "󰤟"
+    return wifiIconForSignal(signalStrength)
+  }
+
+  readonly property var wifiDevice: {
+    const devices = Networking.devices.values;
+
+    for (let i = 0; i < devices.length; i++) {
+      if (devices[i].type === DeviceType.Wifi)
+      return devices[i];
+    }
+
+    return null;
+  }
+
+  readonly property var wifiNetworks: wifiDevice ? wifiDevice.networks : null
+
+  function setWifiEnabled(enabled: bool): void {
+    Networking.wifiEnabled = enabled;
+  }
+
+  function setScannerEnabled(enabled: bool): void {
+    if (wifiDevice)
+    wifiDevice.scannerEnabled = enabled;
+  }
+
+  function wifiIconForSignal(signalPercent: real): string {
+    if (signalPercent >= 75) return "󰤨";
+    if (signalPercent >= 50) return "󰤥";
+    if (signalPercent >= 25) return "󰤢";
+    return "󰤟";
   }
 }

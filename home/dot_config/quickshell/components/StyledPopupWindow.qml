@@ -39,6 +39,20 @@ PopupWindow {
       centerIn: parent
     }
 
+    Behavior on implicitWidth {
+      NumberAnimation {
+        duration: Theme.animationDurationMd
+        easing.type: Easing.OutCubic
+      }
+    }
+
+    Behavior on implicitHeight {
+      NumberAnimation {
+        duration: Theme.animationDurationMd
+        easing.type: Easing.OutCubic
+      }
+    }
+
     Behavior on opacity {
       NumberAnimation {
         duration: Theme.animationDurationMd
