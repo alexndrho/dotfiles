@@ -2,7 +2,8 @@
 
 * {
   all: unset;
-  font-family: "Inter", "JetBrainsMono Nerd Font Propo";
+  font-family:
+    "AdwaitaMono Nerd Font Propo", "Inter", "JetBrainsMono Nerd Font Propo";
   font-size: 1em;
 }
 
