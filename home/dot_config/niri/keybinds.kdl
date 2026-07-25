@@ -14,8 +14,8 @@ binds {
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" {
         spawn-sh "swaylock"
     }
-    Super+Alt+P hotkey-overlay-title="Power Menu: wlogout" {
-        spawn-sh "flock -n \"$XDG_RUNTIME_DIR/wlogout.lock\" wlogout"
+    Super+P hotkey-overlay-title="Power Menu" {
+        spawn "qs" "ipc" "call" "powermenu" "toggle"
     }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null {
         spawn-sh "pkill orca || exec orca"
@@ -460,3 +460,4 @@ binds {
         power-off-monitors
     }
 }
+

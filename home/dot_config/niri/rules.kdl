@@ -17,4 +17,11 @@ window-rule {
     match app-id="firefox$" title="^Picture-in-Picture$"
     open-floating true
 }
+layer-rule {
+    match namespace="^quickshell$" layer="overlay"
+    background-effect {
+        blur true
+        xray false
+    }
+}
 
