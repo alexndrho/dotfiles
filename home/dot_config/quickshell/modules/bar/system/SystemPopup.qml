@@ -21,10 +21,16 @@ StyledPopupWindow {
         return mainPage
         case SystemPopup.View.Wifi:
         return wifiPage
+        case SystemPopup.View.Bluetooth:
+        return bluetoothPage
         default:
         return null
       }
     }
+  }
+
+  function goHome() {
+    root.currentView = SystemPopup.View.Main
   }
 
   Component {
@@ -40,7 +46,15 @@ StyledPopupWindow {
     id: wifiPage
 
     SystemWifiContent {
-      onBackClicked: root.currentView = SystemPopup.View.Main
+      onBackClicked: goHome()
+    }
+  }
+
+  Component {
+    id: bluetoothPage
+
+    SystemBluetoothContent {
+      onBackClicked: goHome()
     }
   }
 

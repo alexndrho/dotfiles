@@ -96,7 +96,7 @@ ColumnLayout {
       {
         icon: "",
         label: "Bluetooth",
-        // action: () => root.bluetoothRequested()
+        action: () => root.bluetoothRequested()
       }
       ]
 
