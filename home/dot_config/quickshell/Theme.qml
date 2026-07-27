@@ -3,7 +3,7 @@ import Quickshell
 import QtQuick
 
 Singleton {
-  readonly property string fontFamily: "AdwaitaMono Nerd Font Propo"
+  readonly property string fontFamily: "Rubik"
 
   //colors
   readonly property color bg0: "#282828"
