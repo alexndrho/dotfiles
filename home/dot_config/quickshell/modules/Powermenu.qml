@@ -8,12 +8,14 @@ import qs.components
 
 PanelWindow {
   id: root
+
   anchors {
     top: true
     bottom: true
     left: true
     right: true
   }
+
   exclusionMode: ExclusionMode.Ignore
   WlrLayershell.layer: WlrLayer.Overlay
   WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
@@ -25,6 +27,7 @@ PanelWindow {
 
   Item {
     id: content
+
     anchors.fill: parent
     opacity: root.opened ? 1 : 0
 
@@ -83,12 +86,17 @@ PanelWindow {
 
           ColumnLayout {
             id: buttonContent
+
             anchors.centerIn: parent
 
             StyledText {
+              font {
+                family: Theme.monoFontFamily
+                pixelSize: Theme.fontSizeMd * 4
+              }
+
               Layout.alignment: Qt.AlignCenter
               text: modelData.icon
-              font.pixelSize: Theme.fontSizeMd * 4
               color: button.foregroundColor
 
               Behavior on color {

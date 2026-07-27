@@ -4,6 +4,8 @@ import QtQuick
 
 Singleton {
   readonly property string fontFamily: "Rubik"
+  readonly property string monoFontFamily: "CaskaydiaCove Nerd Font Propo"
+  readonly property string iconFontFamily: "CaskaydiaCove Nerd Font Propo"
 
   //colors
   readonly property color bg0: "#282828"

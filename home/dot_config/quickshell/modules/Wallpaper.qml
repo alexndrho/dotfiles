@@ -12,12 +12,12 @@ Variants {
     required property var modelData
     screen: modelData
 
-    WlrLayershell.layer: WlrLayer.Background
-    WlrLayershell.exclusionMode: ExclusionMode.Ignore
-
     anchors {
       top: true; bottom: true; left: true; right: true
     }
+
+    WlrLayershell.layer: WlrLayer.Background
+    WlrLayershell.exclusionMode: ExclusionMode.Ignore
 
     color: "transparent"
 
