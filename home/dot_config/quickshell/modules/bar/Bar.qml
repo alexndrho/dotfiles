@@ -68,6 +68,9 @@ PanelWindow {
 
       spacing: root.spacing
 
+      Tray {
+        Layout.alignment: Qt.AlignHCenter
+      }
       Clock {
         Layout.alignment: Qt.AlignHCenter
       }
@@ -79,4 +82,5 @@ PanelWindow {
       }
     }
   }
+
 }
