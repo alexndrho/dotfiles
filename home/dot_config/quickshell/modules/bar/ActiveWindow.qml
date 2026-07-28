@@ -22,7 +22,7 @@ ColumnLayout {
     source: Quickshell.iconPath(
       root.desktopEntry?.icon ?? "application-x-executable"
     )
-    implicitSize: Theme.fontSizeMd * 1.25
+    implicitSize: Theme.fontSizeLg
 
     Behavior on source {
       SequentialAnimation {
