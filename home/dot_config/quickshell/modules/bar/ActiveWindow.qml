@@ -16,12 +16,35 @@ ColumnLayout {
   : null
 
   IconImage {
+    id: appIcon
     Layout.alignment: Qt.AlignHCenter
 
     source: Quickshell.iconPath(
       root.desktopEntry?.icon ?? "application-x-executable"
     )
     implicitSize: Theme.fontSizeMd * 1.25
+
+    Behavior on source {
+      SequentialAnimation {
+        NumberAnimation {
+          target: appIcon
+          property: "scale"
+          to: 0
+          duration: Theme.animationDurationSm
+          easing.type: Easing.InCubic
+        }
+
+        PropertyAction {}
+
+        NumberAnimation {
+          target: appIcon
+          property: "scale"
+          to: 1
+          duration: Theme.animationDurationSm
+          easing.type: Easing.OutCubic
+        }
+      }
+    }
   }
 
   StyledText {
@@ -37,6 +60,28 @@ ColumnLayout {
       angle: 90
       origin.x: titleLabel.implicitHeight / 2
       origin.y: titleLabel.implicitHeight / 2
+    }
+
+    Behavior on text {
+      SequentialAnimation {
+        NumberAnimation {
+          target: titleLabel
+          property: "opacity"
+          to: 0
+          duration: Theme.animationDurationSm
+          easing.type: Easing.InCubic
+        }
+
+        PropertyAction {}
+
+        NumberAnimation {
+          target: titleLabel
+          property: "opacity"
+          to: 1
+          duration: Theme.animationDurationSm
+          easing.type: Easing.OutCubic
+        }
+      }
     }
   }
 }

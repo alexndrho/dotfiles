@@ -46,5 +46,7 @@ Singleton {
   readonly property int radiusLg: 12
 
   // animation
+  readonly property int animationDurationSm: 120
   readonly property int animationDurationMd: 200
+  readonly property int animationDurationLg: 320
 }
