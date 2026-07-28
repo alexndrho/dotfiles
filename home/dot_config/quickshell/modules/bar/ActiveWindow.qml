@@ -15,19 +15,36 @@ ColumnLayout {
   ? DesktopEntries.byId(activeWindow.appId)
   : null
 
-  IconImage {
-    id: appIcon
+  Item {
+    id: iconSlot
+
     Layout.alignment: Qt.AlignHCenter
 
-    source: Quickshell.iconPath(
-      root.desktopEntry?.icon ?? "application-x-executable"
-    )
-    implicitSize: Theme.fontSizeLg
+    property int iconImplicitSize: Theme.fontSizeLg
 
-    Behavior on source {
+    implicitWidth: iconImplicitSize
+    implicitHeight: iconImplicitSize
+
+    property string displayedIcon: root.desktopEntry?.icon ?? ""
+
+    StyledText {
+      anchors.centerIn: parent
+      visible: !iconSlot.displayedIcon
+      text: ""
+      font.family: Theme.iconFontFamily
+    }
+
+    IconImage {
+      anchors.centerIn: parent
+      implicitSize: iconSlot.iconImplicitSize
+      visible: !!iconSlot.displayedIcon
+      source: Quickshell.iconPath(iconSlot.displayedIcon)
+    }
+
+    Behavior on displayedIcon {
       SequentialAnimation {
         NumberAnimation {
-          target: appIcon
+          target: iconSlot
           property: "scale"
           to: 0
           duration: Theme.animationDurationSm
@@ -37,7 +54,7 @@ ColumnLayout {
         PropertyAction {}
 
         NumberAnimation {
-          target: appIcon
+          target: iconSlot
           property: "scale"
           to: 1
           duration: Theme.animationDurationSm
