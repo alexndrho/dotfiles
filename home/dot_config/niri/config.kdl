@@ -4,5 +4,6 @@ include "keybinds.kdl"
 include "rules.kdl"
 include "animations.kdl"
 include "settings.kdl"
+include optional=true "./colors.kdl"
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
