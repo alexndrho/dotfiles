@@ -1,12 +1,14 @@
 import Quickshell
+import Quickshell.Io
 import Quickshell.Wayland
 import QtQuick
+import qs.config
 
 Variants {
   id: root
   model: Quickshell.screens
 
-  property url wallpaper: Quickshell.shellPath("wallpapers/blue_sky.jpg")
+  property url wallpaper: Appearance.wallpaper
 
   delegate: PanelWindow {
     required property var modelData

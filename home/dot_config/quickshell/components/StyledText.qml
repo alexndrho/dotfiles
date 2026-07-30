@@ -1,9 +1,9 @@
 import Quickshell
 import QtQuick
-import qs
+import qs.config
 
 Text {
   font.family: Theme.fontFamily
   font.pixelSize: Theme.fontSizeMd
-  color: Theme.fg0
+  color: Theme.colors.on_surface
 }

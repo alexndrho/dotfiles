@@ -3,7 +3,7 @@ import Quickshell.Io
 import Quickshell.Wayland
 import QtQuick
 import QtQuick.Layouts
-import qs
+import qs.config
 import qs.components
 
 PanelWindow {
@@ -33,7 +33,7 @@ PanelWindow {
 
     Rectangle {
       anchors.fill: parent
-      color: Qt.rgba(Theme.bg0.r, Theme.bg0.g, Theme.bg0.b, 0.5)
+      color: Qt.rgba(Theme.colors.background.r, Theme.colors.background.g, Theme.colors.background.b, 0.5)
     }
 
     RowLayout {
@@ -75,8 +75,8 @@ PanelWindow {
           property int size: Theme.fontSizeMd * 10
 
           readonly property bool hovered: hoverHandler.hovered
-          readonly property color foregroundColor: hovered ? Theme.bg1 : Theme.fg0
-          readonly property color backgroundColor: hovered ? Theme.green : Theme.bg1
+          readonly property color foregroundColor: hovered ? Theme.colors.on_primary : Theme.colors.on_surface
+          readonly property color backgroundColor: hovered ? Theme.colors.primary : Theme.colors.surface
 
           implicitWidth: size
           implicitHeight: size

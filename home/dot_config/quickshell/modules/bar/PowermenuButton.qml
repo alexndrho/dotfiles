@@ -1,11 +1,11 @@
 import Quickshell
 import QtQuick
-import qs
+import qs.config
 import qs.components
 
 StyledText {
   text: ""
-  color: Theme.red
+  color: Theme.colors.error
 
   MouseArea {
     anchors.fill: parent

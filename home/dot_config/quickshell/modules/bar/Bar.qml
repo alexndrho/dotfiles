@@ -1,7 +1,7 @@
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
-import qs
+import qs.config
 import qs.components
 
 PanelWindow {
@@ -18,7 +18,7 @@ PanelWindow {
     centerContent.implicitWidth,
     rightContent.implicitWidth
   ) + padX * 2
-  color: Theme.bg0
+  color: Theme.colors.surface
 
   Item {
     anchors {

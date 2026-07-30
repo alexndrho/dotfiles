@@ -2,7 +2,7 @@ import Quickshell
 import Quickshell.WindowManager
 import QtQuick
 import QtQuick.Layouts
-import qs
+import qs.config
 import qs.components
 
 ColumnLayout {
@@ -39,7 +39,7 @@ ColumnLayout {
 
       implicitWidth: content.implicitWidth + padX * 2
       implicitHeight: content.implicitHeight + padY * 2
-      color: active ? Theme.green : hovered ? Theme.yellow : Theme.bg1
+      color: active ? Theme.colors.primary : hovered ? Theme.colors.secondary : Theme.colors.surface_container
       radius: Theme.radiusMd
 
       StyledText {
@@ -47,7 +47,7 @@ ColumnLayout {
 
         anchors.centerIn: parent
         text: worksplaceButton.index + 1
-        color: active || hovered ? Theme.bg1 : Theme.fg0
+        color: active ? Theme.colors.on_primary : hovered ? Theme.colors.on_secondary : Theme.colors.on_surface
         font.family: root.fontFamily
 
         Behavior on color {

@@ -2,7 +2,7 @@ import Quickshell
 import QtQuick
 import QtQuick.Layouts
 import qs.components
-import qs
+import qs.config
 import qs.services
 
 Rectangle {
@@ -14,7 +14,7 @@ Rectangle {
 
   implicitWidth: content.implicitWidth + padX * 2
   implicitHeight: content.implicitHeight + padY * 2
-  color: Theme.bg1
+  color: Theme.colors.surface_container
   radius: Theme.spacingMd
 
   ColumnLayout {
@@ -57,7 +57,7 @@ Rectangle {
       Layout.alignment: Qt.AlignHCenter
 
       text: Battery.icon
-      color: Battery.critical ? Theme.yellow : Theme.fg0
+      color: Battery.critical ? Theme.colors.error : Theme.colors.on_surface
       font.family: root.fontFamily
     }
   }

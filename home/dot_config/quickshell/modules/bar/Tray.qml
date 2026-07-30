@@ -3,7 +3,7 @@ import Quickshell.Widgets
 import Quickshell.Services.SystemTray
 import QtQuick
 import QtQuick.Layouts
-import qs
+import qs.config
 
 ColumnLayout {
   spacing: Theme.spacingSm
