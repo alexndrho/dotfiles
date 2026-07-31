@@ -60,7 +60,7 @@ PanelWindow {
         {
           icon: "",
           label: "Lock",
-          command: ["swaylock"]
+          command: ["qs", "ipc", "call", "lockscreen", "activate"]
         },
         {
           icon: "",

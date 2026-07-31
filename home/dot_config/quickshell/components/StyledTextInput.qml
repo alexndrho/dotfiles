@@ -1,0 +1,101 @@
+import QtQuick
+import QtQuick.Controls
+import qs.config
+
+Rectangle {
+  id: root
+
+  property int padX: Theme.spacingMd
+  property int padY: Theme.spacingMd
+  property string placeholderText: ""
+  property bool loading: false
+  property bool hasError: false
+  property alias input: input
+
+  implicitWidth: input.implicitWidth + padX * 2
+  implicitHeight: Math.ceil(inputMetrics.height) + padY * 2
+  color: Theme.colors.surface_container
+  radius: Theme.radiusMd
+
+  border {
+    width: 1
+    color: hasError ? Theme.colors.error : input.activeFocus ? Theme.colors.primary : Theme.colors.outline
+  }
+
+  signal accepted(string text)
+
+  TextInput {
+    id: input
+
+    anchors {
+      fill: parent
+      topMargin: root.padY
+      bottomMargin: root.padY
+      leftMargin: root.padX
+      rightMargin: root.padX
+    }
+
+    font {
+      family: Theme.fontFamily
+      pixelSize: Theme.fontSizeMd
+    }
+
+    color: Theme.colors.on_surface
+    verticalAlignment: TextInput.AlignVCenter
+    clip: true
+    selectByMouse: true
+
+    onAccepted: {
+      if (!root.loading) {
+        root.accepted(text)
+      }
+    }
+
+    FontMetrics {
+      id: inputMetrics
+      font: input.font
+    }
+  }
+
+  Text {
+    anchors {
+      left: input.left
+      verticalCenter: input.verticalCenter
+    }
+
+    text: root.placeholderText
+    font: input.font
+    color: Theme.colors.on_surface_variant
+    visible: root.placeholderText.length !== 0 && input.text.length === 0
+  }
+
+  BusyIndicator {
+    id: spinner
+
+    anchors {
+      right: parent.right
+      rightMargin: root.padX
+      verticalCenter: parent.verticalCenter
+    }
+
+    width: Math.ceil(inputMetrics.height)
+    height: width
+    padding: 0
+
+    palette.text: input.color
+
+    running: root.loading
+    visible: running
+  }
+
+  HoverHandler {
+    cursorShape: Qt.PointingHandCursor
+  }
+
+  Behavior on border.color {
+    ColorAnimation {
+      duration: Theme.animationDurationSm
+      easing.type: Easing.InOutCubic
+    }
+  }
+}

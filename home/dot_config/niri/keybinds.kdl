@@ -11,8 +11,8 @@ binds {
     Super+Alt+V hotkey-overlay-title="Clipboard History: cliphist" {
         spawn "cliphist-fuzzel-img"
     }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" {
-        spawn-sh "swaylock"
+    Super+Alt+L hotkey-overlay-title="Lock the Screen" {
+        spawn "qs" "ipc" "call" "lockscreen" "activate"
     }
     Super+P hotkey-overlay-title="Power Menu" {
         spawn "qs" "ipc" "call" "powermenu" "toggle"
