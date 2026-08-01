@@ -3,7 +3,9 @@ return {
   dependencies = {
     {
       'stevearc/oil.nvim',
-      opts = {},
+      opts = {
+        delete_to_trash = true,
+      },
       dependencies = { { 'nvim-mini/mini.icons', opts = {} } },
       lazy = false,
       keys = {
