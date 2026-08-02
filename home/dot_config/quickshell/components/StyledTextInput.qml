@@ -8,6 +8,7 @@ Rectangle {
   property int padX: Theme.spacingMd
   property int padY: Theme.spacingMd
   property string placeholderText: ""
+  property bool centered: false
   property bool loading: false
   property bool hasError: false
   property alias input: input
@@ -35,6 +36,10 @@ Rectangle {
       rightMargin: root.padX
     }
 
+    horizontalAlignment: root.centered
+    ? TextInput.AlignHCenter
+    : TextInput.AlignLeft
+
     font {
       family: Theme.fontFamily
       pixelSize: Theme.fontSizeMd
@@ -60,8 +65,13 @@ Rectangle {
   Text {
     anchors {
       left: input.left
+      right: input.right
       verticalCenter: input.verticalCenter
     }
+
+    horizontalAlignment: root.centered
+    ? Text.AlignHCenter
+    : Text.AlignLeft
 
     text: root.placeholderText
     font: input.font

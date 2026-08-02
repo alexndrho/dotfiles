@@ -12,46 +12,109 @@ Image {
   source: Appearance.wallpaper
   fillMode: Image.PreserveAspectCrop
 
-  ColumnLayout {
+  Item {
+    id: content
     anchors.centerIn: parent
-    spacing: Theme.spacingXl
 
     width: Math.min(parent.width - Theme.spacingXl * 2, 350)
     height: Math.min(parent.height - Theme.spacingXl * 2, 800)
 
+    property bool showPassword:
+    root.context.currentText.length > 0
+    || root.context.unlockInProgress
+    || root.context.showFailure
+
+    states: State {
+      name: "active"
+      when: content.showPassword
+
+      AnchorChanges {
+        target: clockSection
+        anchors {
+          top: parent.top
+          verticalCenter: undefined
+        }
+      }
+
+      PropertyChanges {
+        target: passwordPrompt
+        opacity: 0
+      }
+
+      PropertyChanges {
+        target: passwordSection
+        opacity: 1
+      }
+    }
+
+    transitions: Transition {
+      AnchorAnimation {
+        duration: Theme.animationDurationMd
+        easing.type: Easing.InOutQuad
+      }
+
+      NumberAnimation {
+        properties: "opacity"
+        duration: Theme.animationDurationMd
+        easing.type: Easing.InOutQuad
+      }
+    }
+
     ColumnLayout {
-      Layout.alignment: Qt.AlignHCenter
+      id: clockSection
 
-      StyledText {
-        Layout.alignment: Qt.AlignHCenter
-
-        text: Qt.formatDateTime(clock.date, "hh:mm AP")
-
-        font.pixelSize: Theme.fontSizeXl * 4
+      anchors {
+        horizontalCenter: parent.horizontalCenter
+        verticalCenter: parent.verticalCenter
       }
 
       StyledText {
         Layout.alignment: Qt.AlignHCenter
 
         text: Qt.formatDateTime(clock.date, "dddd, MMMM d")
-
         font.pixelSize: Theme.fontSizeXl
+      }
+
+      StyledText {
+        Layout.alignment: Qt.AlignHCenter
+
+        text: Qt.formatDateTime(clock.date, "hh:mm AP")
+        font.pixelSize: Theme.fontSizeXl * 4
       }
     }
 
-    Item {
-      Layout.fillHeight: true
+    StyledText {
+      id: passwordPrompt
+
+      anchors {
+        bottom: parent.bottom
+        horizontalCenter: parent.horizontalCenter
+      }
+
+      text: "Start typing your password to unlock"
+      horizontalAlignment: Text.AlignHCenter
+      opacity: 1
     }
 
     ColumnLayout {
-      Layout.fillWidth: true
+      id: passwordSection
+
+      anchors {
+        bottom: parent.bottom
+        left: parent.left
+        right: parent.right
+      }
+
+      opacity: 0
 
       StyledTextInput {
         id: passwordInput
 
         Layout.fillWidth: true
+        Layout.maximumWidth: Theme.spacingMd * 25
+        Layout.alignment: Qt.AlignHCenter
 
-        placeholderText: "Enter your password"
+        centered: true
         input.echoMode: TextInput.Password
         input.inputMethodHints: Qt.ImhSensitiveData
         input.text: root.context.currentText
@@ -67,6 +130,8 @@ Image {
       }
 
       StyledText {
+        Layout.alignment: Qt.AlignHCenter
+
         text: "Incorrect password"
         color: Theme.colors.error
         opacity: root.context.showFailure ? 1 : 0
