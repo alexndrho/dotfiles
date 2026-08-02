@@ -1,14 +1,14 @@
 layout {
     background-color "{{colors.background.default.hex}}"
     focus-ring {
-        active-color "{{colors.primary.default.hex}}"
-        inactive-color "{{colors.outline.default.hex}}"
-        urgent-color "{{colors.error.default.hex}}"
+        active-color "{{colors.primary.default.hex}}CC"
+        inactive-color "{{colors.outline.default.hex}}CC"
+        urgent-color "{{colors.error.default.hex}}CC"
     }
     border {
-        active-color "{{colors.primary.default.hex}}"
-        inactive-color "{{colors.outline.default.hex}}"
-        urgent-color "{{colors.error.default.hex}}"
+        active-color "{{colors.primary.default.hex}}CC"
+        inactive-color "{{colors.outline.default.hex}}CC"
+        urgent-color "{{colors.error.default.hex}}CC"
     }
     shadow {
         color "{{colors.shadow.default.hex}}70"

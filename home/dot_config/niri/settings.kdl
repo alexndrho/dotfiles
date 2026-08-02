@@ -15,10 +15,11 @@ layout {
         proportion 0.5
     }
     focus-ring {
+        off
         width 4
     }
     border {
-        off
+        on
         width 4
     }
     shadow {
