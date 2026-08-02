@@ -1,4 +1,5 @@
-font=Inter
+font=Rubik
+icon-path=/usr/share/icons/Papirus-Dark
 background-color=#282828ff
 text-color=#d4be98ff
 width=420
