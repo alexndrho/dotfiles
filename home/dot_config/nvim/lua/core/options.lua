@@ -8,6 +8,7 @@ vim.o.smartcase = true
 vim.o.signcolumn = 'yes'
 vim.o.showmode = false
 vim.o.cursorline = true
+vim.o.undofile = true
 vim.o.inccommand = 'split'
 vim.o.scrolloff = 10
 vim.o.confirm = true
