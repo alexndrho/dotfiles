@@ -1,14 +1,14 @@
-import Quickshell
 import QtQuick
 import QtQuick.Layouts
 import qs.config
 import qs.components
 
-PanelWindow {
+Rectangle {
   id: root
 
-  anchors { top: true; bottom: true; left: true }
+  anchors { top: parent.top; bottom: parent.bottom; left: parent.left }
 
+  required property var screen
   property int padX: Theme.spacingSm
   property int padY: Theme.spacingMd
   property int spacing: Theme.spacingMd
