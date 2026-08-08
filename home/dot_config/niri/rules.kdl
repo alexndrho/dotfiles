@@ -2,6 +2,9 @@ window-rule {
     geometry-corner-radius 10
     clip-to-geometry true
     draw-border-with-background false
+}
+window-rule {
+    match app-id="^kitty$"
     opacity 0.95
     background-effect {
         blur true
