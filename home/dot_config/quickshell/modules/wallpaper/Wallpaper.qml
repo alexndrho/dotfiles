@@ -28,5 +28,10 @@ Variants {
       source: root.wallpaper
       fillMode: Image.PreserveAspectCrop
     }
+
+    MouseArea {
+      anchors.fill: parent
+      onClicked: Appearance.backgroundClicked()
+    }
   }
 }

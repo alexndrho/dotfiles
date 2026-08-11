@@ -11,6 +11,9 @@ binds {
     Super+Alt+V hotkey-overlay-title="Clipboard History: cliphist" {
         spawn "cliphist-fuzzel-img"
     }
+    Super+Shift+W hotkey-overlay-title="Wallpaper Picker" {
+        spawn "qs" "ipc" "call" "wallpaper" "togglePicker"
+    }
     Super+Alt+L hotkey-overlay-title="Lock the Screen" {
         spawn "qs" "ipc" "call" "lockscreen" "activate"
     }
