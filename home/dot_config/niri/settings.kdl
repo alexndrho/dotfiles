@@ -3,7 +3,7 @@ cursor {
     xcursor-size 24
 }
 layout {
-    gaps 12
+    gaps 16
     center-focused-column "never"
     always-center-single-column
     preset-column-widths {
