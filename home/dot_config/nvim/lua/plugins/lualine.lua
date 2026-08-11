@@ -19,6 +19,11 @@ return {
       component_separators = '|',
       section_separators = '',
     },
+    winbar = {
+      lualine_c = {
+        { 'navic' },
+      },
+    },
     sections = {
       lualine_b = {
         { 'branch', icon = icons.branch },

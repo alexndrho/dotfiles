@@ -29,6 +29,13 @@ return {
           -- dap
           set_hl('DapBreak', palette.red, palette.none)
           set_hl('DapStop', palette.yellow, palette.none)
+
+          -- navic
+          set_hl('NavicIconsFunction', palette.green, palette.none)
+          set_hl('NavicIconsMethod', palette.green, palette.none)
+          set_hl('NavicIconsClass', palette.aqua, palette.none)
+          set_hl('NavicText', palette.fg0, palette.none)
+          set_hl('NavicSeparator', palette.grey1, palette.none)
         end,
       })
 
