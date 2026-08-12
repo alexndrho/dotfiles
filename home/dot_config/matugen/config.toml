@@ -19,6 +19,11 @@ input_path = "./templates/nvim.json"
 output_path = "~/.config/matugen/themes/nvim-colors.json"
 post_hook = "pkill -SIGUSR1 nvim"
 
+[templates.pywalfox]
+input_path = "./templates/pywalfox.json"
+output_path = "~/.cache/wal/colors.json"
+post_hook = 'pywalfox update'
+
 [templates.vesktop]
 input_path = "./templates/midnight-discord.css"
 output_path = "~/.config/vesktop/themes/midnight-discord.css"
