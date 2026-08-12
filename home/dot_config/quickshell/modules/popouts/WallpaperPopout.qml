@@ -100,7 +100,7 @@ StyledPopupWindow {
 
     FolderListModel {
       id: wallpapers
-      folder: Qt.resolvedUrl("../../wallpapers/")
+      folder: "file://" + Quickshell.env("HOME") + "/Pictures/wallpapers/"
       showDirs: false
       nameFilters: ["*.jpg", "*.jpeg", "*.png", "*.webp"]
     }

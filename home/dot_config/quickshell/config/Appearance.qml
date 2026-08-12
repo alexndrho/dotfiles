@@ -7,7 +7,7 @@ import QtCore
 Singleton {
   id: root
 
-  property string wallpaper: Quickshell.shellPath("wallpapers/blue_sky.jpg")
+  property string wallpaper: Quickshell.env("HOME") + "/Pictures/wallpapers/blue_sky.jpg"
 
   signal backgroundClicked()
 
