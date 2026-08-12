@@ -12,3 +12,8 @@ post_hook = 'niri msg action load-config-file'
 [templates.vesktop]
 input_path = "./templates/midnight-discord.css"
 output_path = "~/.config/vesktop/themes/midnight-discord.css"
+
+[templates.spotify]
+input_path = "./templates/spicetify.ini"
+output_path = "~/.config/spicetify/Themes/Sleek/color.ini"
+post_hook = "pgrep -x spicetify > /dev/null || spicetify apply -n"
