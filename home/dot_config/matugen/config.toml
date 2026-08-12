@@ -19,6 +19,10 @@ input_path = "./templates/nvim.json"
 output_path = "~/.config/matugen/themes/nvim-colors.json"
 post_hook = "pkill -SIGUSR1 nvim"
 
+[templates.yazi]
+input_path = "./templates/yazi.toml"
+output_path = '~/.config/yazi/theme.toml'
+
 [templates.pywalfox]
 input_path = "./templates/pywalfox.json"
 output_path = "~/.cache/wal/colors.json"
