@@ -23,7 +23,6 @@ Singleton {
       "image",
       root.wallpaper,
       "--mode", "dark",
-      "--source-color-index", "0"
       ])
   }
 
