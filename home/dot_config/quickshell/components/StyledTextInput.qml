@@ -12,6 +12,7 @@ Rectangle {
   property bool loading: false
   property bool hasError: false
   property alias input: input
+  property alias hoverEnabled: hoverHandler.enabled
 
   implicitWidth: input.implicitWidth + padX * 2
   implicitHeight: Math.ceil(inputMetrics.height) + padY * 2
@@ -99,6 +100,7 @@ Rectangle {
   }
 
   HoverHandler {
+    id: hoverHandler
     cursorShape: Qt.PointingHandCursor
   }
 

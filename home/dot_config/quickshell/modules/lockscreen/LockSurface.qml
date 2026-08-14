@@ -119,6 +119,7 @@ Image {
         input.inputMethodHints: Qt.ImhSensitiveData
         input.text: root.context.currentText
         input.onTextEdited: root.context.currentText = input.text
+        hoverEnabled: passwordSection.opacity > 0
         loading: root.context.unlockInProgress
         hasError: root.context.showFailure
 
