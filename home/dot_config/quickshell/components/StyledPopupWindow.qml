@@ -9,7 +9,6 @@ PopupWindow {
   property alias content: content
 
   property bool opened: false
-  property real closedScale: 0.95
 
   visible: opened || content.opacity > 0
   grabFocus: true
@@ -27,7 +26,7 @@ PopupWindow {
     id: content
 
     opacity: root.opened ? 1 : 0
-    scale: root.opened ? 1 : root.closedScale
+    scale: root.opened ? 1 : Theme.popoutClosedScale
 
     Behavior on opacity {
       NumberAnimation {

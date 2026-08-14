@@ -9,8 +9,14 @@ PanelWindow {
   color: "transparent"
   exclusionMode: ExclusionMode.Ignore
 
-  mask: Region {}
+  mask: Region {
+    id: windowInputMask
+  }
 
   // Popouts
+  NotificationPopouts {
+    anchorWindow: root
+    inputMask: windowInputMask
+  }
   WallpaperPopout { anchorWindow: root }
 }

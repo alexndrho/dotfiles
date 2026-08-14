@@ -33,6 +33,8 @@ Singleton {
   readonly property int animationDurationMd: 200
   readonly property int animationDurationLg: 320
 
+  readonly property real popoutClosedScale: 0.95
+
   // colors
   FileView {
     path: Quickshell.env("HOME") + "/.local/state/quickshell/generated/colors.json"
