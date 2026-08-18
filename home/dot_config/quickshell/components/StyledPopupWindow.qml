@@ -5,16 +5,15 @@ import qs.config
 PopupWindow {
   id: root
 
-  default property alias data: content.data
-  property alias content: content
+  default property alias data: surface.data
+  property alias child: surface.child
+  property alias surfaceTransformOrigin: surface.transformOrigin
 
   property bool opened: false
 
-  visible: opened || content.opacity > 0
-  grabFocus: true
-
-  implicitWidth: content.implicitWidth
-  implicitHeight: content.implicitHeight
+  visible: opened || surface.opacity > 0
+  implicitWidth: surface.implicitWidth
+  implicitHeight: surface.implicitHeight
   color: "transparent"
 
   onVisibleChanged: {
@@ -23,7 +22,7 @@ PopupWindow {
   }
 
   Wrapper {
-    id: content
+    id: surface
 
     opacity: root.opened ? 1 : 0
     scale: root.opened ? 1 : Theme.popoutClosedScale

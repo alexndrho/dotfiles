@@ -24,7 +24,7 @@ StyledPopupWindow {
     gravity: Edges.Top
   }
 
-  content.transformOrigin: Item.Bottom
+  surfaceTransformOrigin: Item.Bottom
 
   Connections {
     target: Appearance
@@ -34,7 +34,7 @@ StyledPopupWindow {
     }
   }
 
-  ScrollView {
+  child: ScrollView {
     id: content
 
     property int wallpaperPerRow: 4
@@ -104,13 +104,13 @@ StyledPopupWindow {
       showDirs: false
       nameFilters: ["*.jpg", "*.jpeg", "*.png", "*.webp"]
     }
+  }
 
-    IpcHandler {
-      target: "wallpaper"
+  IpcHandler {
+    target: "wallpaper"
 
-      function togglePicker(): void {
-        root.opened = !root.opened
-      }
+    function togglePicker(): void {
+      root.opened = !root.opened
     }
   }
 }

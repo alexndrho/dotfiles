@@ -96,57 +96,8 @@ Column {
         dismissNotification()
       }
 
-      PauseAnimation {
-        id: expiryTimer
-        readonly property real timeout:
-        trackedNotification.modelData.expireTimeout
-
-        duration: timeout > 0 ? timeout : trackedNotification.defaultTimeout
-        running: timeout !== 0
-        paused: hoverHandler.hovered
-
-        onFinished: trackedNotification.animateThenClose(
-          () => trackedNotification.modelData.expire()
-        )
-      }
-
-      HoverHandler {
-        id: hoverHandler
-        parent: trackedNotification
-      }
-
-      MouseArea {
-        anchors.fill: parent
-        acceptedButtons: Qt.LeftButton | Qt.RightButton
-        cursorShape: Qt.PointingHandCursor
-
-        onClicked: mouse => {
-          if (mouse.button === Qt.RightButton)
-          trackedNotification.dismissNotification()
-          else
-          trackedNotification.activateNotification()
-        }
-      }
-
-      Connections {
-        target: trackedNotification.modelData
-
-        function restartExpiry() {
-          if (expiryTimer.timeout !== 0)
-          expiryTimer.restart()
-        }
-
-        function onSummaryChanged() { restartExpiry() }
-        function onBodyChanged() { restartExpiry() }
-        function onImageChanged() { restartExpiry() }
-        function onAppIconChanged() { restartExpiry() }
-        function onHintsChanged() { restartExpiry() }
-        function onActionsChanged() { restartExpiry() }
-        function onExpireTimeoutChanged() { restartExpiry() }
-      }
-
-      RowLayout {
-        width: trackedNotification.width - trackedNotification.padX * 2
+      child: RowLayout {
+        id: notificationContent
         spacing: Theme.spacingMd
 
         Image {
@@ -218,6 +169,55 @@ Column {
             visible: text.trim().length > 0
           }
         }
+      }
+
+      PauseAnimation {
+        id: expiryTimer
+        readonly property real timeout:
+        trackedNotification.modelData.expireTimeout
+
+        duration: timeout > 0 ? timeout : trackedNotification.defaultTimeout
+        running: timeout !== 0
+        paused: hoverHandler.hovered
+
+        onFinished: trackedNotification.animateThenClose(
+          () => trackedNotification.modelData.expire()
+        )
+      }
+
+      HoverHandler {
+        id: hoverHandler
+        parent: trackedNotification
+      }
+
+      MouseArea {
+        anchors.fill: parent
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
+        cursorShape: Qt.PointingHandCursor
+
+        onClicked: mouse => {
+          if (mouse.button === Qt.RightButton)
+          trackedNotification.dismissNotification()
+          else
+          trackedNotification.activateNotification()
+        }
+      }
+
+      Connections {
+        target: trackedNotification.modelData
+
+        function restartExpiry() {
+          if (expiryTimer.timeout !== 0)
+          expiryTimer.restart()
+        }
+
+        function onSummaryChanged() { restartExpiry() }
+        function onBodyChanged() { restartExpiry() }
+        function onImageChanged() { restartExpiry() }
+        function onAppIconChanged() { restartExpiry() }
+        function onHintsChanged() { restartExpiry() }
+        function onActionsChanged() { restartExpiry() }
+        function onExpireTimeoutChanged() { restartExpiry() }
       }
 
       ParallelAnimation {
