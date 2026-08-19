@@ -53,6 +53,7 @@ Column {
       property var afterCloseAnimationAction: null
 
       width: root.width
+      height: implicitHeight
 
       Component.onCompleted: {
         root.inputMask.regions.push(inputRegion)
@@ -188,18 +189,18 @@ Column {
       HoverHandler {
         id: hoverHandler
         parent: trackedNotification
+        cursorShape: Qt.PointingHandCursor
       }
 
-      MouseArea {
-        anchors.fill: parent
+      TapHandler {
         acceptedButtons: Qt.LeftButton | Qt.RightButton
-        cursorShape: Qt.PointingHandCursor
 
-        onClicked: mouse => {
-          if (mouse.button === Qt.RightButton)
-          trackedNotification.dismissNotification()
-          else
-          trackedNotification.activateNotification()
+        onTapped: (eventPoint, button) => {
+          if (button === Qt.RightButton) {
+            trackedNotification.dismissNotification()
+          } else {
+            trackedNotification.activateNotification()
+          }
         }
       }
 
