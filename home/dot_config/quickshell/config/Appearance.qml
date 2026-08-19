@@ -9,8 +9,6 @@ Singleton {
 
   property string wallpaper: Quickshell.env("HOME") + "/Pictures/wallpapers/blue_sky.jpg"
 
-  signal backgroundClicked()
-
   Settings {
     category: "appearance"
     location: Qt.resolvedUrl(Quickshell.shellPath("settings.ini"))

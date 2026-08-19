@@ -26,14 +26,6 @@ StyledPopupWindow {
 
   surfaceTransformOrigin: Item.Bottom
 
-  Connections {
-    target: Appearance
-
-    function onBackgroundClicked(): void {
-      root.opened = false
-    }
-  }
-
   child: ScrollView {
     id: content
 
