@@ -14,7 +14,7 @@ Rectangle {
   property alias input: input
   property alias hoverEnabled: hoverHandler.enabled
 
-  implicitWidth: input.implicitWidth + padX * 2
+  implicitWidth: Math.max(input.implicitWidth, placeholder.implicitWidth) + padX * 2
   implicitHeight: Math.ceil(inputMetrics.height) + padY * 2
   color: Theme.colors.surface_container
   radius: Theme.radiusMd
@@ -64,6 +64,7 @@ Rectangle {
   }
 
   Text {
+    id: placeholder
     anchors {
       left: input.left
       right: input.right
