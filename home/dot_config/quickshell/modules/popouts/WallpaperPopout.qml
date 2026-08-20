@@ -8,23 +8,17 @@ import QtQuick.Effects
 import qs.config
 import qs.components
 
-StyledPopupWindow {
+Popout {
   id: root
   required property var anchorWindow
 
-  anchor {
-    window: root.anchorWindow
-
-    rect.x: root.anchorWindow.width / 2
-    rect.y: root.anchorWindow.height - Theme.spacingMd
-    rect.width: 1
-    rect.height: 1
-
-    edges: Edges.Bottom
-    gravity: Edges.Top
+  anchors {
+    horizontalCenter: parent.horizontalCenter
+    bottom: parent.bottom
+    bottomMargin: Theme.spacingMd
   }
 
-  surfaceTransformOrigin: Item.Bottom
+  transformOrigin: Item.Bottom
 
   child: ScrollView {
     id: content
@@ -35,6 +29,7 @@ StyledPopupWindow {
     property int cardGap: Theme.spacingMd
 
     property int wallpaperRowMax: 3
+    implicitWidth: (cardWidth * wallpaperPerRow) + (cardGap * (wallpaperPerRow - 1))
     implicitHeight: (cardHeight * wallpaperRowMax) + (cardGap * (wallpaperRowMax - 1))
     + wallpaperLabel.implicitHeight + cardGap
 

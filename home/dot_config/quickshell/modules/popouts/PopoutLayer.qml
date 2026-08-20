@@ -11,6 +11,10 @@ PanelWindow {
 
   mask: Region {
     id: windowInputMask
+
+    Region {
+      item: wallpaperPopout.visible ? wallpaperPopout : null
+    }
   }
 
   // Popouts
@@ -18,5 +22,9 @@ PanelWindow {
     anchorWindow: root
     inputMask: windowInputMask
   }
-  WallpaperPopout { anchorWindow: root }
+
+  WallpaperPopout {
+    id: wallpaperPopout
+    anchorWindow: root
+  }
 }

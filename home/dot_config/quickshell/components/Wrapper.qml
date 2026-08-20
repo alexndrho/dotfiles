@@ -11,12 +11,4 @@ WrapperRectangle {
   bottomMargin: padY
   color: Theme.colors.surface
   radius: Theme.radiusMd
-
-  // Item {
-  //   id: content
-  //
-  //   anchors.centerIn: parent
-  //   implicitWidth: childrenRect.width
-  //   implicitHeight: childrenRect.height
-  // }
 }
