@@ -9,13 +9,25 @@ Wrapper {
 
   visible: opened || opacity > 0
 
-  onVisibleChanged: {
-    if (!visible)
-    opened = false
-  }
-
   opacity: root.opened ? 1 : 0
   scale: root.opened ? 1 : Theme.popoutClosedScale
+
+  width: implicitWidth
+  height: implicitHeight
+
+  Behavior on width {
+    NumberAnimation {
+      duration: Theme.animationDurationMd
+      easing.type: Easing.OutCubic
+    }
+  }
+
+  Behavior on height {
+    NumberAnimation {
+      duration: Theme.animationDurationMd
+      easing.type: Easing.OutCubic
+    }
+  }
 
   Behavior on opacity {
     NumberAnimation {

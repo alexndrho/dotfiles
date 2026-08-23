@@ -1,5 +1,4 @@
 import Quickshell
-import Quickshell.Io
 import Qt.labs.folderlistmodel
 import QtQuick
 import QtQuick.Layouts
@@ -7,97 +6,78 @@ import QtQuick.Controls
 import QtQuick.Effects
 import qs.config
 import qs.components
+import qs.services
 
-Popout {
+ScrollView {
   id: root
+
   required property var anchorWindow
+  property int wallpaperPerRow: 4
+  property int cardWidth: Theme.spacingMd * 20
+  property int cardHeight: cardWidth / 2
+  property int cardGap: Theme.spacingMd
 
-  anchors {
-    horizontalCenter: parent.horizontalCenter
-    bottom: parent.bottom
-    bottomMargin: Theme.spacingMd
-  }
+  property int wallpaperRowMax: 3
+  implicitWidth: (cardWidth * wallpaperPerRow) + (cardGap * (wallpaperPerRow - 1))
+  implicitHeight: (cardHeight * wallpaperRowMax) + (cardGap * (wallpaperRowMax - 1))
+  + wallpaperLabel.implicitHeight + cardGap
 
-  transformOrigin: Item.Bottom
+  GridLayout {
+    columns: root.wallpaperPerRow
+    columnSpacing: root.cardGap
+    rowSpacing: root.cardGap
 
-  child: ScrollView {
-    id: content
+    RowLayout {
+      id: wallpaperLabel
+      Layout.columnSpan: parent.columns
+      Layout.fillWidth: true
+      spacing: Theme.spacingXs
 
-    property int wallpaperPerRow: 4
-    property int cardWidth: Theme.spacingMd * 20
-    property int cardHeight: cardWidth / 2
-    property int cardGap: Theme.spacingMd
-
-    property int wallpaperRowMax: 3
-    implicitWidth: (cardWidth * wallpaperPerRow) + (cardGap * (wallpaperPerRow - 1))
-    implicitHeight: (cardHeight * wallpaperRowMax) + (cardGap * (wallpaperRowMax - 1))
-    + wallpaperLabel.implicitHeight + cardGap
-
-    GridLayout {
-      columns: content.wallpaperPerRow
-      columnSpacing: content.cardGap
-      rowSpacing: content.cardGap
-
-      RowLayout {
-        id: wallpaperLabel
-        Layout.columnSpan: parent.columns
-        Layout.fillWidth: true
-        spacing: Theme.spacingXs
-
-        StyledText {
-          text: ""
-          font.family: Theme.iconFontFamily
-        }
-
-        StyledText {
-          text: "Wallpapers"
-        }
+      StyledText {
+        text: ""
+        font.family: Theme.iconFontFamily
       }
 
-      Repeater {
-        model: wallpapers
+      StyledText {
+        text: "Wallpapers"
+      }
+    }
 
-        delegate: Image {
-          id: wallpaperImage
-          required property url fileUrl
-          required property string filePath
+    Repeater {
+      model: wallpapers
 
-          Layout.preferredWidth: content.cardWidth
-          Layout.preferredHeight: content.cardHeight
-          source: fileUrl
-          // sourceSize is measured in physical pixels. Match the output's
-          sourceSize.width: Math.ceil(content.cardWidth * root.anchorWindow.devicePixelRatio)
-          sourceSize.height: Math.ceil(content.cardHeight * root.anchorWindow.devicePixelRatio)
-          asynchronous: true
-          smooth: true
-          fillMode: Image.PreserveAspectCrop
+      delegate: Image {
+        id: wallpaperImage
+        required property url fileUrl
+        required property string filePath
 
-          MouseArea {
-            anchors.fill: parent
-            cursorShape: Qt.PointingHandCursor
+        Layout.preferredWidth: root.cardWidth
+        Layout.preferredHeight: root.cardHeight
+        source: fileUrl
+        // sourceSize is measured in physical pixels. Match the output's
+        sourceSize.width: Math.ceil(root.cardWidth * root.anchorWindow.devicePixelRatio)
+        sourceSize.height: Math.ceil(root.cardHeight * root.anchorWindow.devicePixelRatio)
+        asynchronous: true
+        smooth: true
+        fillMode: Image.PreserveAspectCrop
 
-            onClicked: {
-              Appearance.wallpaper = wallpaperImage.filePath
-              root.opened = false
-            }
+        MouseArea {
+          anchors.fill: parent
+          cursorShape: Qt.PointingHandCursor
+
+          onClicked: {
+            Appearance.wallpaper = wallpaperImage.filePath
+            PopoutManager.close()
           }
         }
       }
     }
-
-    FolderListModel {
-      id: wallpapers
-      folder: "file://" + Quickshell.env("HOME") + "/Pictures/wallpapers/"
-      showDirs: false
-      nameFilters: ["*.jpg", "*.jpeg", "*.png", "*.webp"]
-    }
   }
 
-  IpcHandler {
-    target: "wallpaper"
-
-    function togglePicker(): void {
-      root.opened = !root.opened
-    }
+  FolderListModel {
+    id: wallpapers
+    folder: "file://" + Quickshell.env("HOME") + "/Pictures/wallpapers/"
+    showDirs: false
+    nameFilters: ["*.jpg", "*.jpeg", "*.png", "*.webp"]
   }
 }

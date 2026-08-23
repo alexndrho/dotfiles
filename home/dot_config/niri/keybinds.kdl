@@ -5,14 +5,14 @@ binds {
     Mod+T hotkey-overlay-title="Open a Terminal: kitty" {
         spawn "kitty"
     }
-    Mod+D hotkey-overlay-title="Run an Application: fuzzel" {
-        spawn "fuzzel"
+    Mod+D hotkey-overlay-title="Toggle launcher" {
+        spawn "qs" "ipc" "call" "popout" "toggle" "launcher"
     }
     Super+Alt+V hotkey-overlay-title="Clipboard History: cliphist" {
         spawn "cliphist-fuzzel-img"
     }
-    Super+Shift+W hotkey-overlay-title="Wallpaper Picker" {
-        spawn "qs" "ipc" "call" "wallpaper" "togglePicker"
+    Super+Shift+W hotkey-overlay-title="Toggle wallpaper Picker" {
+        spawn "qs" "ipc" "call" "popout" "toggle" "wallpaper"
     }
     Super+Alt+L hotkey-overlay-title="Lock the Screen" {
         spawn "qs" "ipc" "call" "lockscreen" "activate"
