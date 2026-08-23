@@ -9,17 +9,14 @@ Column {
   id: root
 
   required property var anchorWindow
-  required property var inputMask
+  readonly property var notifications: notificationServer.trackedNotifications.values
   property int animationDuration: Theme.animationDurationLg
   property int maxNotifications: 5
 
-  anchors {
-    top: parent.top
-    right: parent.right
-    margins: Theme.spacingMd
-  }
+  property color notificationBackgroundColor: Theme.colors.surface_container
+  property color notificationForegroundColor: Theme.colors.on_surface
 
-  width: Theme.spacingXl * 15
+  // width: Theme.spacingXl * 15
   spacing: Theme.spacingMd
 
   NotificationServer {
@@ -35,7 +32,7 @@ Column {
 
   Repeater {
     model: ScriptModel {
-      values: [...notificationServer.trackedNotifications.values]
+      values: [...root.notifications]
       .reverse()
       .slice(0, root.maxNotifications)
     }
@@ -54,9 +51,9 @@ Column {
 
       width: root.width
       height: implicitHeight
+      color: root.notificationBackgroundColor
 
       Component.onCompleted: {
-        root.inputMask.regions.push(inputRegion)
         openAnimation.start()
       }
 
@@ -155,6 +152,7 @@ Column {
             Layout.fillWidth: true
             font.bold: true
             text: trackedNotification.modelData.summary
+            color: root.notificationForegroundColor
             wrapMode: Text.Wrap
             maximumLineCount: 3
             elide: Text.ElideRight
@@ -164,6 +162,7 @@ Column {
           StyledText {
             Layout.fillWidth: true
             text: trackedNotification.modelData.body
+            color: root.notificationForegroundColor
             wrapMode: Text.Wrap
             maximumLineCount: 3
             elide: Text.ElideRight

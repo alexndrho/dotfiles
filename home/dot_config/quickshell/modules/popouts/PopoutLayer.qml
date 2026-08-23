@@ -23,14 +23,30 @@ PanelWindow {
     id: windowInputMask
 
     Region {
+      item: popoutTopRight.opened ? popoutTopRight : null
+    }
+
+    Region {
       item: popoutBottomCenter.opened ? popoutBottomCenter : null
     }
   }
 
   // Popouts
-  NotificationPopouts {
-    anchorWindow: root
-    inputMask: windowInputMask
+  Popout {
+    id: popoutTopRight
+
+    anchors {
+      top: parent.top
+      right: parent.right
+    }
+
+    opened: notificationPopouts.notifications.length > 0
+    implicitWidth: Theme.spacingXl * 15
+
+    NotificationPopouts {
+      id: notificationPopouts
+      anchorWindow: root
+    }
   }
 
   Popout {
