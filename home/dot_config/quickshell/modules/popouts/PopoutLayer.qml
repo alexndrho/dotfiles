@@ -33,23 +33,15 @@ PanelWindow {
     inputMask: windowInputMask
   }
 
-  Shortcut {
-    sequence: "Escape"
-    enabled: PopoutManager.activePopout !== ""
-    onActivated: PopoutManager.close()
-  }
-
   Popout {
     id: popoutBottomCenter
 
     anchors {
       horizontalCenter: parent.horizontalCenter
       bottom: parent.bottom
-      bottomMargin: Theme.spacingMd
     }
 
     opened: popoutLoader.item !== null
-    transformOrigin: Item.Bottom
 
     child: Loader {
       id: popoutLoader
@@ -73,5 +65,11 @@ PanelWindow {
         anchorWindow: root
       }
     }
+  }
+
+  Shortcut {
+    sequence: "Escape"
+    enabled: PopoutManager.activePopout !== ""
+    onActivated: PopoutManager.close()
   }
 }
