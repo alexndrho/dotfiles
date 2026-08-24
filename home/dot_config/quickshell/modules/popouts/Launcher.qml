@@ -22,46 +22,6 @@ ColumnLayout {
     }
   }
 
-  function moveSelection(offset) {
-    if (entriesList.count === 0)
-    return;
-
-    keyboardNavigation = true
-
-    entriesList.currentIndex = Math.max(
-      0,
-      Math.min(
-        entriesList.count - 1,
-        entriesList.currentIndex + offset
-      )
-    );
-
-    entriesList.positionViewAtIndex(
-      entriesList.currentIndex,
-      ListView.Contain
-    );
-  }
-
-  Shortcut {
-    sequence: "Down"
-    onActivated: root.moveSelection(1)
-  }
-
-  Shortcut {
-    sequence: "Up"
-    onActivated: root.moveSelection(-1)
-  }
-
-  Shortcut {
-    sequence: "Ctrl+N"
-    onActivated: root.moveSelection(1)
-  }
-
-  Shortcut {
-    sequence: "Ctrl+P"
-    onActivated: root.moveSelection(-1)
-  }
-
   StyledTextInput {
     id: queryInput
 
@@ -100,14 +60,12 @@ ColumnLayout {
     }
   }
 
-  ListView {
+  StyledListView {
     id: entriesList
     Layout.fillWidth: true
     Layout.preferredHeight: Math.min(contentHeight, Theme.spacingMd * 40)
 
-    model: entries.values
-    currentIndex: entries.values.length > 0 ? 0 : -1
-    clip: true
+    entries: entries.values
 
     delegate: Wrapper {
       id: entry
@@ -156,13 +114,9 @@ ColumnLayout {
         }
       }
 
-      HoverHandler {
-        onPointChanged: root.keyboardNavigation = false
-        onHoveredChanged: {
-          if (hovered && !root.keyboardNavigation){
-            entriesList.currentIndex = entry.index
-          }
-        }
+      StyledListView.DelegateHoverHandler {
+        view: entriesList
+        index: entry.index
       }
 
       TapHandler {
