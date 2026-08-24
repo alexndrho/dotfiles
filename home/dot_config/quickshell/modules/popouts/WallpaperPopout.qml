@@ -27,20 +27,13 @@ ScrollView {
     columnSpacing: root.cardGap
     rowSpacing: root.cardGap
 
-    RowLayout {
+    WindowHeader {
       id: wallpaperLabel
+
       Layout.columnSpan: parent.columns
       Layout.fillWidth: true
-      spacing: Theme.spacingXs
-
-      StyledText {
-        text: ""
-        font.family: Theme.iconFontFamily
-      }
-
-      StyledText {
-        text: "Wallpapers"
-      }
+      iconText: ""
+      text: "Wallpapers"
     }
 
     Repeater {

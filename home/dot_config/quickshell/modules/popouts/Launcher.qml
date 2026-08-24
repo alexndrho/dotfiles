@@ -22,6 +22,11 @@ ColumnLayout {
     }
   }
 
+  WindowHeader {
+    iconText: "󰝘"
+    text: "Launcher"
+  }
+
   StyledTextInput {
     id: queryInput
 
