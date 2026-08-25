@@ -8,8 +8,8 @@ binds {
     Mod+D hotkey-overlay-title="Toggle launcher" {
         spawn "qs" "ipc" "call" "popout" "toggle" "launcher"
     }
-    Super+Alt+V hotkey-overlay-title="Clipboard History: cliphist" {
-        spawn "cliphist-fuzzel-img"
+    Super+Alt+V hotkey-overlay-title="Toggle clipboard history" {
+        spawn "qs" "ipc" "call" "popout" "toggle" "cliphist"
     }
     Super+Shift+W hotkey-overlay-title="Toggle wallpaper Picker" {
         spawn "qs" "ipc" "call" "popout" "toggle" "wallpaper"

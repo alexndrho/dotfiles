@@ -4,8 +4,10 @@ import qs.config
 Rectangle {
   id: root
 
+  signal clicked()
+
   property int padX: Theme.spacingMd
-  property int padY: Theme.spacingMd
+  property int padY: Theme.spacingSm
   property alias content: content
 
   implicitWidth: content.implicitWidth + padX * 2
@@ -22,5 +24,9 @@ Rectangle {
 
   HoverHandler {
     cursorShape: Qt.PointingHandCursor
+  }
+
+  TapHandler {
+    onTapped: clicked()
   }
 }

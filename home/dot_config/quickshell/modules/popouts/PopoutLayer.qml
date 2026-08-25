@@ -64,6 +64,7 @@ PanelWindow {
 
       sourceComponent: ({
           launcher: launcherPopout,
+          cliphist: clipHistoryPopout,
           wallpaper: wallpaperPopout
       })[PopoutManager.activePopout] || null
     }
@@ -72,6 +73,12 @@ PanelWindow {
       id: launcherPopout
 
       Launcher {}
+    }
+
+    Component {
+      id: clipHistoryPopout
+
+      ClipHistoryPopout {}
     }
 
     Component {
