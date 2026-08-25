@@ -23,10 +23,12 @@ PanelWindow {
     id: windowInputMask
 
     Region {
+      id: topRightInputRegion
       item: popoutTopRight.opened ? popoutTopRight : null
     }
 
     Region {
+      id: bottomCenterInputRegion
       item: popoutBottomCenter.opened ? popoutBottomCenter : null
     }
   }
@@ -42,6 +44,7 @@ PanelWindow {
 
     opened: notificationPopouts.notifications.length > 0
     implicitWidth: Theme.spacingXl * 15
+    onSlideProgressChanged: topRightInputRegion.changed()
 
     NotificationPopouts {
       id: notificationPopouts
@@ -58,6 +61,7 @@ PanelWindow {
     }
 
     opened: popoutLoader.item !== null
+    onSlideProgressChanged: bottomCenterInputRegion.changed()
 
     child: Loader {
       id: popoutLoader
