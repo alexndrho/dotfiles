@@ -40,7 +40,11 @@ PanelWindow {
       spacing: root.spacing
 
       Workspaces {
+        Layout.alignment: Qt.AlignHCenter
         screen: root.screen
+      }
+      WeatherBadge {
+        Layout.alignment: Qt.AlignHCenter
       }
     }
 
