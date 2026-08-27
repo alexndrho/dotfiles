@@ -63,9 +63,18 @@ ColumnLayout {
         PopoutManager.close()
       }
 
-      StyledText {
-        text: history.modelData.preview
-        elide: Text.ElideRight
+      ColumnLayout {
+        spacing: 0
+
+        StyledText {
+          Layout.fillWidth: true
+          Layout.preferredWidth: history.width - history.padX * 2
+
+          text: history.modelData.preview
+          wrapMode: Text.WordWrap
+          maximumLineCount: 3
+          elide: Text.ElideRight
+        }
       }
 
       StyledListView.DelegateHoverHandler {

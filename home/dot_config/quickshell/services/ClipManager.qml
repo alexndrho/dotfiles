@@ -35,7 +35,7 @@ Singleton {
   Process {
     id: listProc
     running: true
-    command: ["cliphist", "list"]
+    command: ["cliphist", "-preview-width", "500", "list"]
     stdout: StdioCollector {
       onStreamFinished: {
         root.history = this.text.split("\n")
