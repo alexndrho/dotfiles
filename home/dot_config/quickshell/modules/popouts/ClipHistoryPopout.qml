@@ -19,16 +19,11 @@ ColumnLayout {
     }
 
     StyledButton {
-      padX: Theme.spacingXs
+      text: "Clear"
+      padX: Theme.spacingSm
       padY: Theme.spacingXs
+      pixelSize: Theme.fontSizeSm
       visible: !isEmpty
-
-      content {
-        text: "Clear"
-        font {
-          pixelSize: Theme.fontSizeSm
-        }
-      }
 
       onClicked: {
         PopoutManager.close()

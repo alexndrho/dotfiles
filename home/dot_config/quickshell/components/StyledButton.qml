@@ -1,25 +1,45 @@
 import QtQuick
+import QtQuick.Layouts
 import qs.config
+import qs.components
 
-Rectangle {
+Wrapper {
   id: root
 
   signal clicked()
 
-  property int padX: Theme.spacingMd
-  property int padY: Theme.spacingSm
-  property alias content: content
+  property string icon
+  property string text
+  property int pixelSize: Theme.fontSizeMd
+  property color backgroundColor: Theme.colors.primary
+  property color foregroundColor: Theme.colors.on_primary
 
-  implicitWidth: content.implicitWidth + padX * 2
-  implicitHeight: content.implicitHeight + padY * 2
-  color: Theme.colors.primary
-  radius: Theme.radiusMd
+  padX: Theme.spacingMd
+  padY: Theme.spacingSm
+  color: backgroundColor
 
-  StyledText {
+  RowLayout {
     id: content
+    spacing: Theme.spacingXs
 
-    anchors.centerIn: parent
-    color: Theme.colors.on_primary
+    StyledText {
+      text: root.icon
+      color: root.foregroundColor
+      font {
+        family: Theme.iconFontFamily
+        pixelSize: root.pixelSize
+      }
+      visible: !!root.icon
+    }
+
+    StyledText {
+      text: root.text
+      color: root.foregroundColor
+      font {
+        pixelSize: root.pixelSize
+      }
+      visible: !!root.text
+    }
   }
 
   HoverHandler {
