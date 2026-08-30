@@ -28,12 +28,12 @@ Singleton {
     return "󰁺"
   }
 
-  function weatherIconCode(code): string {
+  function weatherIconCode(code, isDay: bool): string {
     switch (String(code)) {
       case "113":
-      return ""  // sunny
+      return isDay ? "" : ""  // clear
       case "116":
-      return ""  // partly cloudy
+      return isDay ? "" : ""  // partly cloudy
       case "119":
       return ""  // cloudy
       case "122":
@@ -45,7 +45,7 @@ Singleton {
       case "176":
       case "263":
       case "353":
-      return ""  // light showers
+      return isDay ? "" : ""  // light showers
       case "179":
       case "182":
       case "185":
@@ -59,13 +59,13 @@ Singleton {
       case "365":
       case "374":
       case "377":
-      return ""  // light sleet showers
+      return isDay ? "" : ""  // light sleet showers
       case "200":
       case "386":
       return ""  // thundery showers
       case "227":
       case "320":
-      return ""  // light snow
+      return isDay ? "" : ""  // light snow
       case "230":
       case "329":
       case "332":
@@ -74,7 +74,7 @@ Singleton {
       case "266":
       case "293":
       case "296":
-      return ""  // light rain
+      return isDay ? "" : ""  // light rain
       case "299":
       case "305":
       case "356":
@@ -86,7 +86,7 @@ Singleton {
       case "323":
       case "326":
       case "368":
-      return ""  // light snow showers
+      return isDay ? "" : ""  // light snow showers
       case "335":
       case "371":
       case "395":
@@ -94,7 +94,7 @@ Singleton {
       case "389":
       return ""  // thunderstorm with heavy rain
       case "392":
-      return ""  // thunderstorm with snow showers
+      return isDay ? "" : ""  // thunderstorm with snow showers
       default:
       return ""  // unknown
     }

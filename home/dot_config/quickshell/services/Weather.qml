@@ -17,6 +17,41 @@ Singleton {
     console.warn("Weather:", message)
   }
 
+  function timeToMinutes(time: string): int {
+    const [clock, period] = time.split(" ")
+    let [hours, minutes] = clock.split(":").map(Number)
+
+    hours = (hours % 12) + (period === "PM" ? 12 : 0)
+
+    return hours * 60 + minutes
+  }
+
+  function isDaytime(astronomy: var): bool {
+    if (
+      !astronomy
+      || typeof astronomy.sunrise !== "string"
+      || typeof astronomy.sunset !== "string"
+    ) {
+      return true
+    }
+
+    const sunrise = root.timeToMinutes(astronomy.sunrise)
+    const sunset = root.timeToMinutes(astronomy.sunset)
+
+    if (
+      !Number.isFinite(sunrise)
+      || !Number.isFinite(sunset)
+      || sunrise < 0
+      || sunset < 0
+    ) {
+      return true
+    }
+
+    const now = new Date()
+    const currentTime = now.getHours() * 60 + now.getMinutes()
+    return currentTime >= sunrise && currentTime < sunset
+  }
+
   Process {
     id: weatherProc
     running: true
@@ -47,6 +82,7 @@ Singleton {
       try {
         const parsed = JSON.parse(output)
         const current = parsed.current_condition?.[0]
+        const astronomy = parsed.weather?.[0]?.astronomy?.[0]
 
         if (
           !current
@@ -57,7 +93,10 @@ Singleton {
           return
         }
 
-        root.icon = IconUtils.weatherIconCode(current.weatherCode)
+        root.icon = IconUtils.weatherIconCode(
+          current.weatherCode,
+          root.isDaytime(astronomy)
+        )
         root.tempC = current.temp_C
       } catch (error) {
         root.setWeatherError("Could not parse response: " + error)
