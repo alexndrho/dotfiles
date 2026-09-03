@@ -1,5 +1,6 @@
 pragma Singleton
 import Quickshell
+import QtQuick
 import Quickshell.Services.Pipewire
 
 Singleton {
@@ -23,7 +24,30 @@ Singleton {
     sinkAudio.volume = Math.max(0, Math.min(volume, 100)) / 100
   }
 
+  function showOsd() {
+    PopoutManager.open("volume-osd")
+    hideTimer.restart()
+  }
+
   PwObjectTracker {
     objects: [root.sink]
+  }
+
+  Connections {
+    target: root.sinkAudio
+
+    function onVolumeChanged() {
+      root.showOsd()
+    }
+
+    function onMutedChanged() {
+      root.showOsd()
+    }
+  }
+
+  Timer {
+    id: hideTimer
+    interval: 1000
+    onTriggered: PopoutManager.close("volume-osd")
   }
 }

@@ -11,8 +11,11 @@ PanelWindow {
 
   anchors { top: true; bottom: true; left: true; right: true }
 
+  readonly property bool activePopoutNeedsInput: PopoutManager.activePopout !== ""
+  && PopoutManager.activePopout !== "volume-osd"
+
   WlrLayershell.keyboardFocus:
-  PopoutManager.activePopout !== ""
+  activePopoutNeedsInput
   ? WlrKeyboardFocus.Exclusive
   : WlrKeyboardFocus.None
 
@@ -29,7 +32,7 @@ PanelWindow {
 
     Region {
       id: bottomCenterInputRegion
-      item: popoutBottomCenter.opened ? popoutBottomCenter : null
+      item: popoutBottomCenter.opened && root.activePopoutNeedsInput ? popoutBottomCenter : null
     }
   }
 
@@ -69,7 +72,8 @@ PanelWindow {
       sourceComponent: ({
           launcher: launcherPopout,
           cliphist: clipHistoryPopout,
-          wallpaper: wallpaperPopout
+          wallpaper: wallpaperPopout,
+          "volume-osd": volumeOsd
       })[PopoutManager.activePopout] || null
     }
 
@@ -91,6 +95,12 @@ PanelWindow {
       WallpaperPopout {
         anchorWindow: root
       }
+    }
+
+    Component {
+      id: volumeOsd
+
+      VolumeOsd {}
     }
   }
 
