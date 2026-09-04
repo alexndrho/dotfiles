@@ -1,5 +1,6 @@
 pragma Singleton
 import Quickshell
+import Quickshell.Io
 import QtQuick
 import Quickshell.Services.Pipewire
 
@@ -24,6 +25,22 @@ Singleton {
     sinkAudio.volume = Math.max(0, Math.min(volume, 100)) / 100
   }
 
+  function increase() {
+    set(volume + stepSize)
+    showOsd()
+  }
+
+  function decrease() {
+    set(volume - stepSize)
+    showOsd()
+  }
+
+  function toggleMute() {
+    if (!sinkAudio) return
+    sinkAudio.muted = !sinkAudio.muted
+    showOsd()
+  }
+
   function showOsd() {
     PopoutManager.open("volume-osd")
     hideTimer.restart()
@@ -33,21 +50,25 @@ Singleton {
     objects: [root.sink]
   }
 
-  Connections {
-    target: root.sinkAudio
-
-    function onVolumeChanged() {
-      root.showOsd()
-    }
-
-    function onMutedChanged() {
-      root.showOsd()
-    }
-  }
-
   Timer {
     id: hideTimer
     interval: 1000
     onTriggered: PopoutManager.close("volume-osd")
+  }
+
+  IpcHandler {
+    target: "audio"
+
+    function increase() {
+      root.increase()
+    }
+
+    function decrease() {
+      root.decrease()
+    }
+
+    function toggleMute() {
+      root.toggleMute()
+    }
   }
 }
