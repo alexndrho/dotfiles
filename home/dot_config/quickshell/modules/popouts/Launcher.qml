@@ -103,6 +103,7 @@ ColumnLayout {
 
           StyledText {
             Layout.fillWidth: true
+            font.bold: true
             text: entry.modelData.name
             color: entry.foregroundColor
             elide: Text.ElideRight

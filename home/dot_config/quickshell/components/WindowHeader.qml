@@ -21,5 +21,6 @@ RowLayout {
   StyledText {
     text: root.text
     color: root.foregroundColor
+    font.bold: true
   }
 }
