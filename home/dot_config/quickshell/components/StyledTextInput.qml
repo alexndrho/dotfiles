@@ -47,6 +47,22 @@ Rectangle {
     }
 
     color: Theme.colors.on_surface
+    selectionColor: Theme.colors.primary
+    selectedTextColor: Theme.colors.on_primary
+    cursorDelegate: Rectangle {
+      width: 1.75
+      color: root.hasError ? Theme.colors.error : input.color
+
+      SequentialAnimation on opacity {
+        running: input.activeFocus
+        loops: Animation.Infinite
+
+        PropertyAction { value: 1 }
+        PauseAnimation { duration: 500 }
+        PropertyAction { value: 0 }
+        PauseAnimation { duration: 500 }
+      }
+    }
     verticalAlignment: TextInput.AlignVCenter
     clip: true
     selectByMouse: true
