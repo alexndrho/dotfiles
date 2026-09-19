@@ -7,6 +7,9 @@ handle_error() {
 
 if ! weather=$(
   curl --fail --silent \
+    --retry 3 \
+    --retry-delay 3 \
+    --retry-all-errors \
     --connect-timeout 5 \
     --max-time 15 \
     "https://wttr.in?format=j1"
