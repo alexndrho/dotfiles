@@ -1,19 +1,20 @@
 return {
   {
-    'kdheepak/lazygit.nvim',
+    'NeogitOrg/neogit',
     lazy = true,
-    cmd = {
-      'LazyGit',
-      'LazyGitConfig',
-      'LazyGitCurrentFile',
-      'LazyGitFilter',
-      'LazyGitFilterCurrentFile',
-    },
     dependencies = {
-      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'sindrets/diffview.nvim',
+
+      -- For a custom log pager
+      'm00qek/baleia.nvim',
+    },
+    cmd = 'Neogit',
+    opts = {
+      kind = 'floating',
     },
     keys = {
-      { '<leader>gg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
+      { '<leader>gg', '<cmd>Neogit<cr>', desc = 'Show Neogit UI' },
     },
   },
 
