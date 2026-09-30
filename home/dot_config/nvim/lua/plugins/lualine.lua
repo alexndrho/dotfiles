@@ -5,9 +5,9 @@ local icons = {
     readonly = '',
   },
   diff = {
-    added = ' ',
-    modified = ' ',
-    removed = ' ',
+    added = '+',
+    modified = '~',
+    removed = '-',
   },
 }
 
