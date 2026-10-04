@@ -46,6 +46,7 @@ return {
           path = 1,
           symbols = icons.filename,
         },
+        { 'navic' },
       },
 
       lualine_x = { 'fileformat', 'filetype', 'filesize' },
