@@ -4,6 +4,7 @@ import QtQuick
 import QtQuick.Layouts
 import qs.config
 import qs.components
+import qs.helpers
 
 Column {
   id: root
@@ -126,7 +127,7 @@ Column {
             const iconName = entry?.icon || (isFile ? "" : appIcon)
 
             // Resolve the icon name through the configured system icon theme.
-            return iconName ? Quickshell.iconPath(iconName, true) : ""
+            return IconUtils.resolveApplicationIcon(iconName, "")
           }
 
           Layout.preferredWidth: imageSize

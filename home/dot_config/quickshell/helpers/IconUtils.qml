@@ -2,6 +2,19 @@ pragma Singleton
 import Quickshell
 
 Singleton {
+  function resolveApplicationIcon(iconSource, fallbackIcon = "application-x-executable") {
+    if (!iconSource) {
+      return fallbackIcon ? Quickshell.iconPath(fallbackIcon) : ""
+    }
+
+    if (iconSource.startsWith("file:") || iconSource.startsWith("/")) {
+      return iconSource
+    }
+
+    return Quickshell.iconPath(iconSource, true)
+      || (fallbackIcon ? Quickshell.iconPath(fallbackIcon) : "")
+  }
+
   function getBattery(percentage: int, charging: bool): string {
     if (charging) {
       if (percentage >= 90) return "󰂅"

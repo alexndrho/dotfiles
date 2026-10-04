@@ -4,6 +4,7 @@ import Quickshell.Services.SystemTray
 import QtQuick
 import QtQuick.Layouts
 import qs.config
+import qs.helpers
 
 ColumnLayout {
   spacing: Theme.spacingSm
@@ -19,9 +20,9 @@ ColumnLayout {
 
       Layout.alignment: Qt.AlignHCenter
 
-      source: (entry?.icon && Quickshell.iconPath(entry.icon, true))
+      source: (entry?.icon && IconUtils.resolveApplicationIcon(entry.icon, ""))
         || modelData.icon
-        || Quickshell.iconPath("application-x-executable")
+        || IconUtils.resolveApplicationIcon("")
       implicitSize: Theme.fontSizeLg
     }
   }

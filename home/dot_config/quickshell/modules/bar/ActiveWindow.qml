@@ -38,9 +38,7 @@ ColumnLayout {
       anchors.centerIn: parent
       implicitSize: iconSlot.iconImplicitSize
       visible: !!iconSlot.displayedIcon
-      source: iconSlot.displayedIcon
-        ? Quickshell.iconPath(iconSlot.displayedIcon)
-        : ""
+      source: IconUtils.resolveApplicationIcon(iconSlot.displayedIcon, "")
     }
 
     Behavior on displayedIcon {

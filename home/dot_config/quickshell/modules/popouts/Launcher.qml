@@ -5,6 +5,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import qs.config
 import qs.components
+import qs.helpers
 import qs.services
 
 ColumnLayout {
@@ -92,10 +93,7 @@ ColumnLayout {
 
         IconImage {
           implicitSize: Theme.spacingXl * 1.75
-          visible: !!entry.modelData.icon
-          source: entry.modelData.icon
-          ? Quickshell.iconPath(entry.modelData.icon)
-          : ""
+          source: IconUtils.resolveApplicationIcon(entry.modelData.icon)
         }
 
         ColumnLayout {
