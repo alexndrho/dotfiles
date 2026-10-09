@@ -35,7 +35,7 @@ return {
       config = {
         header = header,
         center = {
-          menu_item { icon = '', desc = 'Browse files', key = 'e', action = 'Oil' },
+          menu_item { icon = '', desc = 'Browse files', key = 'e', action = 'Oil --preview' },
           menu_item {
             icon = '',
             desc = 'Open Obsidian',
@@ -49,7 +49,7 @@ return {
               if vim.fn.filereadable(home_path) == 1 then
                 vim.cmd('edit ' .. vim.fn.fnameescape(home_path))
               else
-                vim.cmd 'Oil'
+                vim.cmd 'Oil --preview'
               end
             end,
           },
